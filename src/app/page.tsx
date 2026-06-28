@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Footer from "@/components/layout/Footer";
@@ -7,7 +8,6 @@ import Property from "@/components/sections/Property";
 import TechnicalMeasures from "@/components/sections/TechnicalMeasures";
 import RandomNumberAnimation from "@/components/ui/RandomNumberAnimation";
 import { motion, useScroll, useTransform } from "framer-motion";
-
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -144,8 +144,11 @@ export default function Home() {
             </div>
             <div className="flex justify-center flex-col font-thin text-2xl">
               <div>
-                [ <RandomNumberAnimation value={new Date().getFullYear() - 2017} /> ] lat
-                doświadczenia
+                [{" "}
+                <RandomNumberAnimation
+                  value={new Date().getFullYear() - 2017}
+                />{" "}
+                ] lat doświadczenia
               </div>
             </div>
             <div className="flex justify-end flex-col">
@@ -182,23 +185,22 @@ export default function Home() {
           </div>
 
           <div className="border-t border-b border-black py-5 border-solid">
-            <div className="font-bold text-2xl  text-justify text-black font-normal indent-8">
+            {/* <div className="font-bold text-2xl  text-justify text-black font-normal indent-8"> */}
+
+            <div className="font-normal text-justify text-xl text-black indent-8">
               Należę do Warszawskiego Stowarzyszenia Rzeczoznawców Majątkowych
               zrzeszonego w Polskiej Federacji Stowarzyszeń Rzeczoznawców
-              Majątkowych
-            </div>
-            <div className="font-normal text-justify text-xl text-black indent-8">
-              Jestem absolwentem Wydziału Wiertnictwa Nafty i Gazu (specjalność
-              gazownictwo ziemne) oraz Wydziału Górnictwa i Geoinżynierii
-              (specjalność zarządzanie i marketing) Akademii Górniczo-Hutniczej
-              w Krakowie. Ukończyłem studia MBA na Akademii Leona Koźmińskiego w
-              Warszawie. Posiadam certyfikaty „Wycena dla potrzeb zabezpieczenia
-              wierzytelności bankowych” (Związek Banków Polskich) oraz „Wycena
-              dla potrzeb zabezpieczenia wierzytelności” (Polska Federacja
-              Stowarzyszeń Rzeczoznawców Majątkowych). Jestem wpisany na listę
-              rzeczoznawców majątkowych rekomendowanych do wycen nieruchomości
-              dla sektora bankowego, publikowaną m.in. przez Związek Banków
-              Polskich.
+              Majątkowych Jestem absolwentem Wydziału Wiertnictwa Nafty i Gazu
+              (specjalność gazownictwo ziemne) oraz Wydziału Górnictwa i
+              Geoinżynierii (specjalność zarządzanie i marketing) Akademii
+              Górniczo-Hutniczej w Krakowie. Ukończyłem studia MBA na Akademii
+              Leona Koźmińskiego w Warszawie. Posiadam certyfikaty „Wycena dla
+              potrzeb zabezpieczenia wierzytelności bankowych” (Związek Banków
+              Polskich) oraz „Wycena dla potrzeb zabezpieczenia wierzytelności”
+              (Polska Federacja Stowarzyszeń Rzeczoznawców Majątkowych). Jestem
+              wpisany na listę rzeczoznawców majątkowych rekomendowanych do
+              wycen nieruchomości dla sektora bankowego, publikowaną m.in. przez
+              Związek Banków Polskich.
             </div>
           </div>
           <div className="w-full h-120">
