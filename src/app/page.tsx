@@ -174,7 +174,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white min-h-screen w-screen flex flex-row" id="o mnie">
-        <div className="flex flex-col w-1/2 bg-white px-16 py-12">
+        <div className="flex flex-col w-1/2 bg-white px-16 pt-18">
           <motion.span
             className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"
             initial={{ opacity: 0, x: -30 }}
@@ -282,7 +282,7 @@ export default function Home() {
           </motion.div>
 
           <div className="relative z-10 flex-col items-center py-3">
-            <div className="text-5xl font-light h-20 mt-10 items-center text-black text-center flex flex-col justify-center">
+            <div className="text-5xl font-light h-20 mt-18 items-center text-black text-center flex flex-col justify-center">
               Dlaczego TOLEMA?
             </div>
 
