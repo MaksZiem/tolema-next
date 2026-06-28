@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -16,14 +16,9 @@ export default function Navbar() {
     ["#ffffff", "#000000", "#000000", "#ffffff", "#ffffff", "#000000"]
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsShrunk(window.scrollY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsShrunk(latest > 10);
+  });
 
   const navLinks = [
     { href: "/auth", label: "O nas" },

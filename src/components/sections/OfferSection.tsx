@@ -236,13 +236,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { MotionValue } from "framer-motion";
 import PricingButton from "@/components/ui/PricingButton";
 
 type Theme = "dark" | "gold" | "light";
 
 interface OfferSectionProps {
-  y: MotionValue<number>;
   theme: Theme;
   eyebrow: string;
   titleLead: string;
@@ -315,7 +313,6 @@ const themes: Record<
 const ticks = Array.from({ length: 11 });
 
 export default function OfferSection({
-  y,
   theme,
   eyebrow,
   titleLead,
@@ -330,18 +327,16 @@ export default function OfferSection({
 
   return (
     <motion.div
-      style={{ y }}
+      style={{ willChange: "transform" }}
       className={`sticky top-0 h-screen w-full overflow-hidden ${t.bg} ${t.text} border-t border-gray-300/30`}
     >
       <div className="mx-auto flex h-full max-w-[1400px] items-center gap-48 px-12">
         {/* ── Media ───────────────────────────────────────────── */}
         <div className="relative flex h-[64vh] w-1/2 items-center justify-center">
-          {/* Ambient glow — jedyny element atmosferyczny */}
-          <motion.div
+          {/* Ambient glow */}
+          <div
             aria-hidden
-            className={`absolute h-[26rem] w-[26rem] rounded-full blur-3xl ${t.glow}`}
-            animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className={`absolute h-[26rem] w-[26rem] rounded-full blur-3xl opacity-60 ${t.glow}`}
           />
 
           {/* Kadr główny */}
@@ -357,6 +352,7 @@ export default function OfferSection({
               muted
               loop
               playsInline
+              preload="metadata"
               className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"
             >
               <source src={videoPrimary} type="video/mp4" />
@@ -381,6 +377,7 @@ export default function OfferSection({
               muted
               loop
               playsInline
+              preload="none"
               className="h-full w-full object-cover grayscale"
             >
               <source src={videoSecondary} type="video/mp4" />

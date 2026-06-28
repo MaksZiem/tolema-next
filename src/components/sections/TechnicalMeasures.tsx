@@ -1,16 +1,10 @@
 "use client";
 
-import type { MotionValue } from "framer-motion";
 import OfferSection from "./OfferSection";
 
-interface Props {
-  y: MotionValue<number>;
-}
-
-export default function TechnicalMeasures({ y }: Props) {
+export default function TechnicalMeasures() {
   return (
     <OfferSection
-      y={y}
       theme="gold"
       eyebrow="Środki techniczne"
       titleLead="Wycena"

@@ -12,11 +12,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function Home() {
   const { scrollY } = useScroll();
 
-  const y1 = useTransform(scrollY, [1000, 1500], [0, 0]);
-  const y2 = useTransform(scrollY, [1500, 2000], [0, 0]);
-  const y3 = useTransform(scrollY, [2000, 2500], [0, 0]);
-
-  // Parallax effect for city - subtle movement
   const cityParallax = useTransform(scrollY, [0, 2000], [0, -200]);
 
   const qualifications = [
@@ -178,45 +173,93 @@ export default function Home() {
         <SectionArrow label="O MNIE" targetSection="o mnie" />
       </section>
 
-      <section className="bg-white h-screen w-screen flex flex-row" id="o mnie">
-        <div className="flex justify-between flex-col items-center w-1/2 bg-gradient-to-r from-gray-200 via-gray-100  to-[#e8e6e6] text-white font-bold text-lg px-20 py-3">
-          <div className="text-5xl font-light h-20 mt-10 flex items-center text-black">
+      <section className="bg-white min-h-screen w-screen flex flex-row" id="o mnie">
+        <div className="flex flex-col w-1/2 bg-white px-16 py-12">
+          <motion.span
+            className="text-sm font-medium uppercase tracking-[0.32em] text-[#D4B876]"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Rzeczoznawca majątkowy
+          </motion.span>
+
+          <motion.h2
+            className="mt-3 text-5xl font-thin text-black tracking-tight"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+            viewport={{ once: true }}
+          >
             O mnie
-          </div>
+          </motion.h2>
 
-          <div className="border-t border-b border-black py-5 border-solid">
-            {/* <div className="font-bold text-2xl  text-justify text-black font-normal indent-8"> */}
-
-            <div className="font-normal text-justify text-xl text-black indent-8">
+          <motion.div
+            className="mt-7 flex gap-5"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex shrink-0 flex-col justify-between py-1">
+              {Array.from({ length: 11 }).map((_, i) => (
+                <motion.span
+                  key={i}
+                  className={`h-px ${i % 5 === 0 ? "w-5 bg-[#D4B876]" : "w-2.5 bg-black/25"}`}
+                  initial={{ scaleX: 0, originX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.04 }}
+                  viewport={{ once: true }}
+                />
+              ))}
+            </div>
+            <p className="text-base font-light leading-relaxed text-black/70">
               Należę do Warszawskiego Stowarzyszenia Rzeczoznawców Majątkowych
               zrzeszonego w Polskiej Federacji Stowarzyszeń Rzeczoznawców
-              Majątkowych Jestem absolwentem Wydziału Wiertnictwa Nafty i Gazu
+              Majątkowych. Jestem absolwentem Wydziału Wiertnictwa Nafty i Gazu
               (specjalność gazownictwo ziemne) oraz Wydziału Górnictwa i
               Geoinżynierii (specjalność zarządzanie i marketing) Akademii
               Górniczo-Hutniczej w Krakowie. Ukończyłem studia MBA na Akademii
-              Leona Koźmińskiego w Warszawie. Posiadam certyfikaty „Wycena dla
-              potrzeb zabezpieczenia wierzytelności bankowych” (Związek Banków
-              Polskich) oraz „Wycena dla potrzeb zabezpieczenia wierzytelności”
+              Leona Koźmińskiego w Warszawie. Posiadam certyfikaty{" "}
+              &#8222;Wycena dla potrzeb zabezpieczenia wierzytelności bankowych&#8221;
+              (Związek Banków Polskich) oraz
+              &#8222;Wycena dla potrzeb zabezpieczenia wierzytelności&#8221;
               (Polska Federacja Stowarzyszeń Rzeczoznawców Majątkowych). Jestem
               wpisany na listę rzeczoznawców majątkowych rekomendowanych do
               wycen nieruchomości dla sektora bankowego, publikowaną m.in. przez
               Związek Banków Polskich.
-            </div>
-          </div>
-          <div className="w-full h-120">
-            <h2 className="text-4xl font-light text-center text-black">
+            </p>
+          </motion.div>
+
+          <div className="mt-10">
+            <motion.span
+              className="text-sm font-medium uppercase tracking-[0.32em] text-[#D4B876]"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
               Uprawnienia i certyfikaty
-            </h2>
-            <ul className="gap-1 mt-5">
+            </motion.span>
+
+            <ul className="mt-5">
               {qualifications.map((item, index) => (
-                <li
+                <motion.li
                   key={index}
-                  className="flex items-start  transition hover:translate-x-2 hover:text-[#2d2d2d] bg-[#D4B876] cursor-default my-1 hover:bg-white duration-300"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.05 + index * 0.07 }}
+                  viewport={{ once: true }}
+                  className="group flex items-start gap-4 py-3 border-b border-black/10 hover:border-[#D4B876] transition-colors duration-300 cursor-default"
                 >
-                  <div className="font-normal text-xl leading-snug text-black p-2">
+                  <span className="text-xs font-medium text-[#D4B876] shrink-0 tabular-nums mt-0.5 w-6">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm font-light leading-snug text-black/70 group-hover:text-black transition-colors duration-300">
                     {item}
-                  </div>
-                </li>
+                  </span>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -294,9 +337,9 @@ export default function Home() {
         className="relative h-[300vh] bg-black text-white z-10"
         id="rozwiazania"
       >
-        <Property y={y1} />
-        <TechnicalMeasures y={y2} />
-        <Business y={y3} />
+        <Property />
+        <TechnicalMeasures />
+        <Business />
       </section>
       <Footer />
     </div>
