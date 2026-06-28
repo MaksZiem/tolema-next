@@ -176,7 +176,7 @@ export default function Home() {
       <section className="bg-white min-h-screen w-screen flex flex-row" id="o mnie">
         <div className="flex flex-col w-1/2 bg-white px-16 py-12">
           <motion.span
-            className="text-sm font-medium uppercase tracking-[0.32em] text-[#D4B876]"
+            className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -196,7 +196,7 @@ export default function Home() {
           </motion.h2>
 
           <motion.div
-            className="mt-7 flex gap-5"
+            className="mt-7 ml-1 flex gap-5"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
@@ -214,7 +214,7 @@ export default function Home() {
                 />
               ))}
             </div>
-            <p className="text-base font-light leading-relaxed text-black/70">
+            <p className="text-base font-light  text-lg leading-relaxed text-black/70">
               Należę do Warszawskiego Stowarzyszenia Rzeczoznawców Majątkowych
               zrzeszonego w Polskiej Federacji Stowarzyszeń Rzeczoznawców
               Majątkowych. Jestem absolwentem Wydziału Wiertnictwa Nafty i Gazu
@@ -234,7 +234,7 @@ export default function Home() {
 
           <div className="mt-10">
             <motion.span
-              className="text-sm font-medium uppercase tracking-[0.32em] text-[#D4B876]"
+              className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -251,7 +251,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.05 + index * 0.07 }}
                   viewport={{ once: true }}
-                  className="group flex items-start gap-4 py-3 border-b border-black/10 hover:border-[#D4B876] transition-colors duration-300 cursor-default"
+                  className="group flex items-start gap-4 py-4 border-b border-black/10 hover:border-[#D4B876] transition-colors duration-300 cursor-default"
                 >
                   <span className="text-xs font-medium text-[#D4B876] shrink-0 tabular-nums mt-0.5 w-6">
                     {String(index + 1).padStart(2, "0")}

@@ -388,7 +388,7 @@ export default function OfferSection({
         {/* ── Treść ───────────────────────────────────────────── */}
         <div className="flex w-1/2 flex-col">
           <motion.span
-            className={`text-sm font-medium uppercase tracking-[0.32em] ${t.eyebrow}`}
+            className={`text-lg font-medium uppercase tracking-[0.32em] ${t.eyebrow}`}
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
