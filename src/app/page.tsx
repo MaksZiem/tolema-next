@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <div className="font-sans relative z-0">
-      <section className="relative h-screen w-full text-white">
+      <section className="relative h-screen w-full text-white" data-navbar="light">
         <video
           autoPlay
           muted
@@ -173,7 +173,7 @@ export default function Home() {
         <SectionArrow label="O MNIE" targetSection="o mnie" />
       </section>
 
-      <section className="bg-white min-h-screen w-screen flex flex-row" id="o mnie">
+      <section className="bg-white min-h-screen w-screen flex flex-row" id="o mnie" data-navbar="dark">
         <div className="flex flex-col w-1/2 bg-white px-16 pt-18">
           <motion.span
             className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"

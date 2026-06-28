@@ -61,6 +61,7 @@ function ServiceSection({
     <section
       ref={ref}
       id={id}
+      data-navbar={dark ? "light" : "dark"}
       className={`relative overflow-hidden py-28 px-8 md:px-16 lg:px-24 ${
         dark ? "bg-black text-white" : "bg-white text-black"
       }`}
@@ -351,7 +352,7 @@ export default function OfferContent() {
   return (
     <main>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative h-screen w-full text-white overflow-hidden">
+      <section className="relative h-screen w-full text-white overflow-hidden" data-navbar="light">
         <video
           autoPlay
           muted
@@ -457,7 +458,7 @@ export default function OfferContent() {
       ))}
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#D4B876] py-28 px-8">
+      <section className="relative overflow-hidden bg-[#D4B876] py-28 px-8" data-navbar="dark">
         {/* Subtle parallax blob */}
         <div
           aria-hidden

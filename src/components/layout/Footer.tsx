@@ -22,7 +22,7 @@ const PhoneIcon = () => (
 const Footer = () => {
   return (
     <>
-      <div className="h-80 flex flex-row relative bg-gradient-to-r from-gray-200 via-gray-100 to-[#e8e6e6]">
+      <div className="h-80 flex flex-row relative bg-gradient-to-r from-gray-200 via-gray-100 to-[#e8e6e6]" data-navbar="dark">
         <div className="w-1/3">
           <div className="pl-5 pt-5 pr-1 pb-5 h-full">
             <div className="h-full border-r border-r-[2px] border-black flex flex-col">

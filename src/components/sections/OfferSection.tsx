@@ -266,6 +266,7 @@ const themes: Record<
     glow: string;
     ring: string;
     meta: string;
+    navbar: "light" | "dark";
   }
 > = {
   dark: {
@@ -280,6 +281,7 @@ const themes: Record<
     glow: "bg-[#D4B876]/25",
     ring: "ring-white/10",
     meta: "text-white/50",
+    navbar: "light" as const,
   },
   gold: {
     bg: "bg-[#D4B876]",
@@ -293,6 +295,7 @@ const themes: Record<
     glow: "bg-white/40",
     ring: "ring-black/10",
     meta: "text-black/55",
+    navbar: "dark" as const,
   },
   light: {
     bg: "bg-white",
@@ -306,6 +309,7 @@ const themes: Record<
     glow: "bg-[#D4B876]/30",
     ring: "ring-black/5",
     meta: "text-black/50",
+    navbar: "dark" as const,
   },
 };
 
@@ -327,6 +331,7 @@ export default function OfferSection({
 
   return (
     <motion.div
+      data-navbar={t.navbar}
       style={{ willChange: "transform" }}
       className={`sticky top-0 h-screen w-full overflow-hidden ${t.bg} ${t.text} border-t border-gray-300/30`}
     >

@@ -1,24 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isShrunk, setIsShrunk] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  const { scrollY } = useScroll();
+  useEffect(() => {
+    const docTop = (el: HTMLElement): number => {
+      let top = 0;
+      let node: HTMLElement | null = el;
+      while (node) {
+        top += node.offsetTop;
+        node = node.offsetParent as HTMLElement | null;
+      }
+      return top;
+    };
 
-  const navTextColor = useTransform(
-    scrollY,
-    [1000, 1050, 2100, 2150, 4250, 4300],
-    ["#ffffff", "#000000", "#000000", "#ffffff", "#ffffff", "#000000"]
-  );
+    const update = () => {
+      // 72px ≈ navbar height — find what section sits just below the bar
+      const threshold = window.scrollY + 72;
+      const sections = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-navbar]")
+      );
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsShrunk(latest > 10);
-  });
+      let active: "light" | "dark" = "light";
+      for (const s of sections) {
+        // offsetTop chain gives natural flow position, unaffected by sticky
+        if (docTop(s) <= threshold) {
+          active = (s.dataset.navbar as "light" | "dark") ?? "light";
+        }
+      }
+      setTheme(active);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  const color = isOpen ? "#000000" : theme === "light" ? "#ffffff" : "#000000";
 
   const navLinks = [
     { href: "/auth", label: "O nas" },
@@ -28,49 +50,30 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-none ${
-        isShrunk ? "py-2" : "py-2"
-      } px-6 flex items-center justify-between
-        ${
-          isOpen
-            ? "backdrop-blur-sm bg-white/50"
-            : "backdrop-blur-sm bg-white/10"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 py-2 px-6 flex items-center justify-between ${
+        isOpen ? "backdrop-blur-sm bg-white/50" : "backdrop-blur-sm bg-white/10"
+      }`}
     >
       <Link href="/">
-        <motion.div
-          style={{ color: navTextColor }}
-          className="font-bold transition-none text-3xl"
+        <div
+          className="font-bold text-3xl"
+          style={{ color, transition: "color 0.35s ease" }}
         >
           TOLEMA wyceny
-        </motion.div>
+        </div>
       </Link>
 
       <div className="md:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-gray-800 focus:outline-none"
+          className="focus:outline-none"
+          style={{ color, transition: "color 0.35s ease" }}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -82,19 +85,19 @@ export default function Navbar() {
         }`}
       >
         {navLinks.map(({ href, label }) => (
-          <motion.li
+          <li
             key={href}
-            style={{ color: isOpen ? "#000000" : navTextColor }}
-            className="py-2 px-4 hover:text-black cursor-pointer relative group"
+            className="py-2 px-4 cursor-pointer relative group"
+            style={{ color, transition: "color 0.35s ease" }}
           >
             <Link href={href} className="block">
               {label}
-              <motion.div
-                style={{ backgroundColor: isOpen ? "#000000" : navTextColor }}
-                className="absolute bottom-0 left-4 right-4 h-0.5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"
+              <div
+                className="absolute bottom-0 left-4 right-4 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"
+                style={{ backgroundColor: color, transition: "background-color 0.35s ease" }}
               />
             </Link>
-          </motion.li>
+          </li>
         ))}
       </ul>
     </nav>
