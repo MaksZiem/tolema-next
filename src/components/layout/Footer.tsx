@@ -28,15 +28,15 @@ const Footer = () => {
             <div className="h-full border-r border-r-[2px] border-black flex flex-col">
               <h1 className="text-center text-3xl">Kontakt</h1>
               <div className="h-full flex flex-col justify-evenly">
-                <div className="ml-5 text-2xl p-2 flex items-center gap-3">
+                <div className="ml-5 text-2xl p-2 flex text-gray-600 items-center gap-3">
                   <EmailIcon />
                   [ e-mail: operat23@gmail.com ]
                 </div>
-                <div className="ml-5 text-2xl p-2 flex items-center gap-3">
+                <div className="ml-5 text-2xl p-2 flex text-gray-600 items-center gap-3">
                   <LocationOnIcon />
                   [ adres: ul. Zdrojowa 13, 05-600 Grójec ]
                 </div>
-                <div className="ml-5 text-2xl p-2 flex items-center gap-3">
+                <div className="ml-5 text-2xl p-2 flex text-gray-600 items-center gap-3">
                   <PhoneIcon />
                   [ telefon: 123 123 123 ]
                 </div>
