@@ -44,7 +44,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/offer", label: "Oferta" },
-    { href: "/path", label: "Jak przebiega wycena" },
+    { href: "/jak-przebiega-wycena", label: "Jak przebiega wycena" },
     { href: "/contact", label: "Kontakt" },
   ];
 
