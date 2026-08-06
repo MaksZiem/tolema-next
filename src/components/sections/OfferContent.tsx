@@ -256,6 +256,7 @@ function TickMarks({ light }: { light: boolean }) {
 function ServiceSection({
   id,
   dark,
+  reverse,
   eyebrow,
   title,
   titleStrong,
@@ -265,6 +266,7 @@ function ServiceSection({
 }: {
   id: string;
   dark: boolean;
+  reverse?: boolean;
   eyebrow: string;
   title: string;
   titleStrong: string;
@@ -286,6 +288,7 @@ function ServiceSection({
     : "border-black/15 text-black/65 hover:border-[#D4B876] hover:text-black";
 
   const borderRule = dark ? "border-white/10" : "border-black/10";
+  const dir = reverse ? -1 : 1;
 
   return (
     <section
@@ -309,12 +312,12 @@ function ServiceSection({
 
       <div className="relative z-10 mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
-        {/* ── Left: description ──────────────────────────────── */}
-        <div className="flex flex-col">
+        {/* ── Description ───────────────────────────────────── */}
+        <div className={`flex flex-col ${reverse ? "lg:order-2" : "lg:order-1"}`}>
           {/* Eyebrow */}
           <motion.div
             className="flex items-center gap-5 mb-6"
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -20 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
@@ -340,7 +343,7 @@ function ServiceSection({
           {/* Tick marks + description */}
           <motion.div
             className="mt-10 flex gap-6"
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -20 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
             viewport={{ once: true }}
@@ -369,7 +372,7 @@ function ServiceSection({
                 className={`flex items-start gap-4 text-sm font-light ${
                   dark ? "text-white/60" : "text-black/60"
                 }`}
-                initial={{ opacity: 0, x: -10 }}
+                initial={{ opacity: 0, x: -10 * dir }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.07 }}
                 viewport={{ once: true }}
@@ -383,12 +386,12 @@ function ServiceSection({
           </motion.ul>
         </div>
 
-        {/* ── Right: tags ────────────────────────────────────── */}
-        <div className="flex flex-col">
+        {/* ── Tags ─────────────────────────────────────────── */}
+        <div className={`flex flex-col ${reverse ? "lg:order-1" : "lg:order-2"}`}>
           {/* Tags label */}
           <motion.div
             className={`flex items-center gap-5 mb-6 border-b pb-6 ${borderRule}`}
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 20 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
@@ -597,8 +600,8 @@ export default function OfferContent() {
       </section>
 
       {/* ── Service sections ─────────────────────────────────── */}
-      {services.map((svc) => (
-        <ServiceSection key={svc.id} {...svc} />
+      {services.map((svc, i) => (
+        <ServiceSection key={svc.id} {...svc} reverse={i % 2 === 1} />
       ))}
 
       {/* ── CTA ──────────────────────────────────────────────── */}

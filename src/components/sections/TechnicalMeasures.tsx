@@ -21,6 +21,7 @@ export default function TechnicalMeasures() {
       videoPrimary="/budowa1.mp4"
       videoSecondary="/budowa2.mp4"
       buttonVariant="reverse"
+      reverse
     />
   );
 }
