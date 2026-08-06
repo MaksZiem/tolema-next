@@ -52,8 +52,9 @@ export default function Navbar() {
   const color = isOpen ? "#000000" : theme === "light" ? "#ffffff" : "#000000";
 
   const navLinks = [
+    { href: "/", label: "Strona główna" },
     { href: "/offer", label: "Oferta" },
-    { href: "/jak-przebiega-wycena", label: "Jak przebiega wycena" },
+    { href: "/process", label: "Proces wyceny" },
     { href: "/contact", label: "Kontakt" },
   ];
 
