@@ -112,7 +112,7 @@ export default function ProcessContent() {
       {/* ── Steps ────────────────────────────────────────────── */}
       <section
         id="etapy-wyceny"
-        className="relative bg-white px-8 pt-40 pb-32 text-black md:px-16 md:pt-48 lg:px-24"
+        className="relative bg-white px-8 pt-40 pb-32 text-black md:px-16 md:pt-38 lg:px-24"
         data-navbar="dark"
       >
         <div className="mx-auto max-w-[1000px]">

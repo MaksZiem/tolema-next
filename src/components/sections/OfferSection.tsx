@@ -128,7 +128,13 @@ export default function OfferSection({
               loop
               playsInline
               preload="metadata"
-              className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"
+              controls={false}
+              disablePictureInPicture
+              disableRemotePlayback
+              tabIndex={-1}
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 pointer-events-none select-none"
             >
               <source src={videoPrimary} type="video/mp4" />
             </video>
@@ -153,7 +159,13 @@ export default function OfferSection({
               loop
               playsInline
               preload="none"
-              className="h-full w-full object-cover grayscale"
+              controls={false}
+              disablePictureInPicture
+              disableRemotePlayback
+              tabIndex={-1}
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              className="h-full w-full object-cover grayscale pointer-events-none select-none"
             >
               <source src={videoSecondary} type="video/mp4" />
             </video>
