@@ -5,176 +5,23 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 
-const ticks = Array.from({ length: 11 });
+// ── Data ──────────────────────────────────────────────────────────────
 
-function TickMarks({ light }: { light: boolean }) {
-  return (
-    <div className="flex shrink-0 flex-col justify-between py-1 h-20">
-      {ticks.map((_, i) => (
-        <motion.span
-          key={i}
-          className={`h-px ${
-            i % 5 === 0
-              ? `w-5 ${light ? "bg-[#D4B876]" : "bg-[#D4B876]"}`
-              : `w-2.5 ${light ? "bg-black/25" : "bg-white/30"}`
-          }`}
-          initial={{ scaleX: 0, originX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 + i * 0.04 }}
-          viewport={{ once: true }}
-        />
-      ))}
-    </div>
-  );
-}
-
-interface ServiceSectionProps {
-  id: string;
-  dark: boolean;
-  eyebrow: string;
-  title: string;
-  titleStrong: string;
-  lead: string;
-  tags: string[];
-  index: number;
-}
-
-function ServiceSection({
-  id,
-  dark,
-  eyebrow,
-  title,
-  titleStrong,
-  lead,
-  tags,
-  index,
-}: ServiceSectionProps) {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
-  const flip = index % 2 !== 0;
-
-  return (
-    <section
-      ref={ref}
-      id={id}
-      data-navbar={dark ? "light" : "dark"}
-      className={`relative overflow-hidden py-28 px-8 md:px-16 lg:px-24 ${
-        dark ? "bg-black text-white" : "bg-white text-black"
-      }`}
-    >
-      {/* Parallax accent gradient */}
-      <motion.div
-        style={{ y: bgY }}
-        aria-hidden
-        className={`absolute inset-0 pointer-events-none ${
-          dark
-            ? "bg-[radial-gradient(ellipse_at_top_right,_#D4B876_0%,_transparent_55%)] opacity-5"
-            : "bg-[radial-gradient(ellipse_at_bottom_left,_#D4B876_0%,_transparent_55%)] opacity-8"
-        }`}
-      />
-
-      <div
-        className={`relative z-10 mx-auto max-w-[1400px] flex flex-col gap-12 ${
-          flip ? "lg:flex-row-reverse" : "lg:flex-row"
-        } lg:gap-20 items-start`}
-      >
-        {/* Text column */}
-        <div className="lg:w-[38%] flex flex-col">
-          <motion.span
-            className="text-sm font-medium uppercase tracking-[0.35em] text-[#D4B876]"
-            initial={{ opacity: 0, x: flip ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            {eyebrow}
-          </motion.span>
-
-          <motion.h2
-            className="mt-5 text-5xl font-thin leading-[1.05] tracking-tight"
-            initial={{ opacity: 0, x: flip ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.06 }}
-            viewport={{ once: true }}
-          >
-            {title}{" "}
-            <span className="font-semibold">{titleStrong}</span>
-          </motion.h2>
-
-          <motion.div
-            className="mt-9 flex gap-6"
-            initial={{ opacity: 0, x: flip ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.14 }}
-            viewport={{ once: true }}
-          >
-            <TickMarks light={!dark} />
-            <p
-              className={`text-lg font-light leading-relaxed ${
-                dark ? "text-white/65" : "text-black/65"
-              }`}
-            >
-              {lead}
-            </p>
-          </motion.div>
-
-          <motion.span
-            className={`mt-10 text-7xl font-thin tabular-nums select-none ${
-              dark ? "text-white/8" : "text-black/8"
-            }`}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            {String(index + 1).padStart(2, "0")}
-          </motion.span>
-        </div>
-
-        {/* Tags column */}
-        <div className="lg:w-[62%]">
-          <motion.ul
-            className="flex flex-wrap gap-2.5"
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: "easeOut", delay: 0.18 }}
-            viewport={{ once: true }}
-          >
-            {tags.map((tag, i) => (
-              <motion.li
-                key={tag}
-                initial={{ opacity: 0, scale: 0.93 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.28, delay: 0.08 + i * 0.025 }}
-                viewport={{ once: true }}
-                className={`cursor-default rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${
-                  dark
-                    ? "border-white/20 text-white/70 hover:border-[#D4B876] hover:text-white"
-                    : "border-black/15 text-black/65 hover:border-[#D4B876] hover:text-black"
-                }`}
-              >
-                {tag}
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const services: Omit<ServiceSectionProps, "index">[] = [
+const services = [
   {
     id: "nieruchomosci",
     dark: false,
     eyebrow: "Nieruchomości",
     title: "Wycena",
     titleStrong: "nieruchomości",
-    lead: "Profesjonalne operaty szacunkowe dla każdego rodzaju nieruchomości — od działek i domów po obiekty komercyjne, przemysłowe, magazynowe i ograniczone prawa rzeczowe.",
+    description:
+      "Sporządzamy operaty szacunkowe dla wszystkich rodzajów nieruchomości — gruntów, budynków, lokali i ograniczonych praw rzeczowych. Wyceny realizujemy zgodnie z obowiązującymi przepisami prawa i standardami zawodowymi rzeczoznawców majątkowych.",
+    useCases: [
+      "Sprzedaż, zakup i zamiana nieruchomości",
+      "Zabezpieczenie wierzytelności bankowych",
+      "Postępowania sądowe i egzekucyjne",
+      "Aktualizacja opłat rocznych i podatków",
+    ],
     tags: [
       "Wycena gruntu",
       "Wycena domu",
@@ -200,7 +47,7 @@ const services: Omit<ServiceSectionProps, "index">[] = [
       "Droga konieczna",
       "Przejazd i przechód",
       "Bezumowne korzystanie z nieruchomości",
-      "Aktualizacja opłaty rocznej za użytkowanie wieczyste",
+      "Aktualizacja opłaty rocznej",
       "Wycena czynszu",
     ],
   },
@@ -210,7 +57,14 @@ const services: Omit<ServiceSectionProps, "index">[] = [
     eyebrow: "Maszyny i środki techniczne",
     title: "Wycena maszyn",
     titleStrong: "i urządzeń",
-    lead: "Szacowanie wartości maszyn budowlanych, rolniczych, przemysłowych, taboru kolejowego, pojazdów specjalistycznych oraz pełnych parków maszynowych i ciągów technologicznych.",
+    description:
+      "Posiadamy uprawnienia do szacowania ruchomości, maszyn, urządzeń i środków technicznych wszelkich branż i typów. Wyceny obejmują zarówno pojedyncze urządzenia, jak i całe parki maszynowe oraz ciągi technologiczne.",
+    useCases: [
+      "Sprzedaż, zakup i likwidacja majątku",
+      "Ubezpieczenie maszyn i urządzeń",
+      "Postępowania sądowe i egzekucyjne",
+      "Inwentaryzacja środków trwałych",
+    ],
     tags: [
       "Maszyny budowlane",
       "Maszyny drogowe",
@@ -242,7 +96,14 @@ const services: Omit<ServiceSectionProps, "index">[] = [
     eyebrow: "Wyposażenie i ruchomości",
     title: "Wycena",
     titleStrong: "wyposażenia",
-    lead: "Wycena wyposażenia domów, gabinetów medycznych, obiektów sportowych, warsztatów, sprzętu RTV/AGD i wszelkich innych ruchomości.",
+    description:
+      "Wyceniamy wyposażenie domów, gabinetów specjalistycznych, obiektów sportowych i warsztatów. Przeprowadzamy również kompleksowe inwentaryzacje majątku ruchomego na potrzeby prawne, ubezpieczeniowe i transakcyjne.",
+    useCases: [
+      "Podział majątku i postępowania spadkowe",
+      "Ubezpieczenie wyposażenia",
+      "Odszkodowania za uszkodzenie mienia",
+      "Inwentaryzacja i wycena zbiorów",
+    ],
     tags: [
       "Sprzęt RTV i AGD",
       "Sprzęt komputerowy",
@@ -269,7 +130,14 @@ const services: Omit<ServiceSectionProps, "index">[] = [
     eyebrow: "Biznes i aktywa niematerialne",
     title: "Wycena",
     titleStrong: "przedsiębiorstwa",
-    lead: "Kompleksowa wycena firm, spółek, znaków towarowych, know-how i wszelkich aktywów niematerialnych dla celów transakcyjnych, podatkowych i prawnych.",
+    description:
+      "Przygotowujemy wyceny przedsiębiorstw, spółek i aktywów niematerialnych na potrzeby transakcji, postępowań sądowych oraz rozliczeń podatkowych. Stosujemy podejścia dochodowe, majątkowe i porównawcze.",
+    useCases: [
+      "Transakcje M&A i sukcesja biznesu",
+      "Spory wspólnicze i podziały majątku",
+      "Rozliczenia podatkowe i apportowe",
+      "Restrukturyzacja i likwidacja spółek",
+    ],
     tags: [
       "Wycena przedsiębiorstwa",
       "Zorganizowana część przedsiębiorstwa",
@@ -295,14 +163,21 @@ const services: Omit<ServiceSectionProps, "index">[] = [
     eyebrow: "Kosztorysy i szkody",
     title: "Kosztorysy",
     titleStrong: "i szacowanie szkód",
-    lead: "Rzetelne kosztorysy dla celów odszkodowawczych, ubezpieczeniowych i negocjacyjnych. Szacowanie strat po zalaniach, zniszczeniach i błędach wykonawczych.",
+    description:
+      "Sporządzamy rzetelne kosztorysy i szacunki szkód dla celów odszkodowawczych, ubezpieczeniowych i negocjacyjnych. Dysponujemy doświadczeniem w sprawach sądowych dotyczących błędów wykonawczych i zalań.",
+    useCases: [
+      "Roszczenia odszkodowawcze i ubezpieczeniowe",
+      "Spory z wykonawcami budowlanymi",
+      "Szkody zalaniowe i pożarowe",
+      "Wyceny dla sądu i komornika",
+    ],
     tags: [
       "Dla celów odszkodowania",
       "Szacowanie strat",
       "Szkody powykonawcze",
       "Nienależyte wykonanie prac",
       "Kosztorys ubezpieczeniowy",
-      "Kosztorys po zalaniu mieszkania lub domu",
+      "Kosztorys po zalaniu",
       "Zniszczenie i uszkodzenie mienia",
       "Kosztorys dla banku",
       "Negocjacje z wykonawcą",
@@ -318,7 +193,14 @@ const services: Omit<ServiceSectionProps, "index">[] = [
     eyebrow: "Nieruchomości specyficzne",
     title: "Wycena obiektów",
     titleStrong: "specjalistycznych",
-    lead: "Hotele, pensjonaty, restauracje, zabytki, obiekty sportowe, sakralne, wojskowe, lotniska, dworce, mosty — nieruchomości wymagające szczególnej wiedzy branżowej.",
+    description:
+      "Wyceniamy nieruchomości wymagające szczególnej wiedzy branżowej i znajomości specyficznych rynków. Obejmuje to obiekty hotelarskie, sportowe, sakralne, infrastrukturalne i zabytkowe.",
+    useCases: [
+      "Transakcje inwestycyjne i deweloperskie",
+      "Wyceny dla samorządów i instytucji publicznych",
+      "Zabezpieczenie kredytów specjalistycznych",
+      "Postępowania sądowe i administracyjne",
+    ],
     tags: [
       "Hotele i pensjonaty",
       "Restauracje",
@@ -344,122 +226,386 @@ const services: Omit<ServiceSectionProps, "index">[] = [
   },
 ];
 
+// ── Tick marks — brand element ────────────────────────────────────────
+
+const ticks = Array.from({ length: 11 });
+
+function TickMarks({ light }: { light: boolean }) {
+  return (
+    <div className="flex shrink-0 flex-col justify-between py-1 h-24">
+      {ticks.map((_, i) => (
+        <motion.span
+          key={i}
+          className={`h-px ${
+            i % 5 === 0
+              ? "w-5 bg-[#D4B876]"
+              : `w-2.5 ${light ? "bg-black/25" : "bg-white/30"}`
+          }`}
+          initial={{ scaleX: 0, originX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 + i * 0.04 }}
+          viewport={{ once: true }}
+        />
+      ))}
+    </div>
+  );
+}
+
+// ── ServiceSection ────────────────────────────────────────────────────
+
+function ServiceSection({
+  id,
+  dark,
+  eyebrow,
+  title,
+  titleStrong,
+  description,
+  useCases,
+  tags,
+}: {
+  id: string;
+  dark: boolean;
+  eyebrow: string;
+  title: string;
+  titleStrong: string;
+  description: string;
+  useCases: string[];
+  tags: string[];
+}) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax: background gradient drifts slower than scroll
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+
+  const tagClass = dark
+    ? "border-white/20 text-white/70 hover:border-[#D4B876] hover:text-white"
+    : "border-black/15 text-black/65 hover:border-[#D4B876] hover:text-black";
+
+  const borderRule = dark ? "border-white/10" : "border-black/10";
+
+  return (
+    <section
+      ref={ref}
+      id={id}
+      data-navbar={dark ? "light" : "dark"}
+      className={`relative overflow-hidden py-32 px-8 md:px-16 lg:px-24 ${
+        dark ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      {/* Parallax background accent */}
+      <motion.div
+        style={{ y: bgY }}
+        aria-hidden
+        className={`absolute inset-0 pointer-events-none ${
+          dark
+            ? "bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,_rgba(212,184,118,0.06)_0%,_transparent_100%)]"
+            : "bg-[radial-gradient(ellipse_60%_50%_at_20%_50%,_rgba(212,184,118,0.08)_0%,_transparent_100%)]"
+        }`}
+      />
+
+      <div className="relative z-10 mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+        {/* ── Left: description ──────────────────────────────── */}
+        <div className="flex flex-col">
+          {/* Eyebrow */}
+          <motion.div
+            className="flex items-center gap-5 mb-6"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="h-px w-12 bg-[#D4B876] shrink-0" />
+            <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
+              {eyebrow}
+            </span>
+          </motion.div>
+
+          {/* Title */}
+          <motion.h2
+            className="text-4xl md:text-5xl lg:text-6xl font-thin leading-[1.05] tracking-tight"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.07 }}
+            viewport={{ once: true }}
+          >
+            {title}{" "}
+            <span className="font-semibold">{titleStrong}</span>
+          </motion.h2>
+
+          {/* Tick marks + description */}
+          <motion.div
+            className="mt-10 flex gap-6"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            viewport={{ once: true }}
+          >
+            <TickMarks light={!dark} />
+            <p
+              className={`text-lg font-light leading-relaxed ${
+                dark ? "text-white/65" : "text-black/65"
+              }`}
+            >
+              {description}
+            </p>
+          </motion.div>
+
+          {/* Use cases list */}
+          <motion.ul
+            className={`mt-10 border-t pt-8 space-y-4 ${borderRule}`}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            viewport={{ once: true }}
+          >
+            {useCases.map((uc, i) => (
+              <motion.li
+                key={uc}
+                className={`flex items-start gap-4 text-sm font-light ${
+                  dark ? "text-white/60" : "text-black/60"
+                }`}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.07 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-[#D4B876] shrink-0 mt-0.5 text-xs font-medium tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>{uc}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+
+        {/* ── Right: tags ────────────────────────────────────── */}
+        <div className="flex flex-col">
+          {/* Tags label */}
+          <motion.div
+            className={`flex items-center gap-5 mb-6 border-b pb-6 ${borderRule}`}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <span
+              className={`text-xs font-medium uppercase tracking-[0.35em] ${
+                dark ? "text-white/35" : "text-black/35"
+              }`}
+            >
+              Zakres usług
+            </span>
+          </motion.div>
+
+          {/* Tag pills */}
+          <motion.div
+            className="flex flex-wrap gap-2"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            viewport={{ once: true }}
+          >
+            {tags.map((tag, i) => (
+              <motion.span
+                key={tag}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.22, delay: 0.08 + i * 0.02 }}
+                viewport={{ once: true }}
+                className={`cursor-default rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${tagClass}`}
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── OfferContent ──────────────────────────────────────────────────────
+
 export default function OfferContent() {
-  const { scrollY } = useScroll();
-  const heroOpacity = useTransform(scrollY, [0, 420], [1, 0]);
-  const heroY = useTransform(scrollY, [0, 600], [0, -130]);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  // City image drifts up slower than scroll → parallax
+  const cityY = useTransform(heroProgress, [0, 1], ["0%", "20%"]);
 
   return (
     <main>
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative h-screen w-full text-white overflow-hidden" data-navbar="light">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="fixed top-0 left-0 w-full h-full object-cover -z-10 brightness-50"
-        >
-          <source src="/nieruchomosc1.mp4" type="video/mp4" />
-        </video>
-
-        {/* Dark vignette for readability */}
-        <div className="fixed top-0 left-0 w-full h-full -z-10 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-
+      {/* ── Hero — bez wideo, split: tekst lewej / miasto prawej ─ */}
+      <section
+        ref={heroRef}
+        className="relative h-screen w-full overflow-hidden bg-black text-white"
+        data-navbar="light"
+      >
+        {/* City image — right 60%, parallax */}
         <motion.div
-          style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 flex flex-col justify-center h-full px-12 max-w-[1400px] mx-auto"
+          style={{ y: cityY }}
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/city.jpg"
+            alt=""
+            className="absolute right-0 top-0 h-[115%] w-[62%] object-cover grayscale opacity-45"
+          />
+        </motion.div>
+
+        {/* Left-to-right gradient: solid black fades into transparent */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-black from-35% via-black/75 to-transparent"
+        />
+        {/* Top vignette for readability */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50"
+        />
+
+        {/* Text — left-aligned, different od strony głównej */}
+        <div className="relative z-10 flex flex-col justify-center h-full px-12 md:px-20 max-w-3xl">
           <motion.span
-            className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876] mb-8"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.9, delay: 0.3 }}
           >
             Rzeczoznawca majątkowy
           </motion.span>
 
-          <motion.h1
-            className="mt-5 text-7xl font-thin leading-[1.05] tracking-tight max-w-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.5 }}
-          >
-            Kompleksowa oferta{" "}
-            <span className="font-semibold">wycen</span>
-          </motion.h1>
-
-          <motion.p
-            className="mt-8 text-xl font-light text-white/65 max-w-[500px] leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            Nieruchomości, maszyny, przedsiębiorstwa, środki techniczne —
-            szacujemy wartość każdego składnika majątku z najwyższą
-            starannością i w oparciu o obowiązujące standardy.
-          </motion.p>
-
-          {/* Scroll cue */}
+          {/* Line 1 */}
           <motion.div
-            className="mt-20 flex items-center gap-5"
+            className="overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
+            transition={{ duration: 0.1, delay: 0.4 }}
           >
-            <div className="flex flex-col gap-1 py-1">
-              {Array.from({ length: 7 }).map((_, i) => (
-                <span
-                  key={i}
-                  className={`h-px ${
-                    i % 3 === 0
-                      ? "w-5 bg-[#D4B876]"
-                      : "w-2.5 bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
-            <span className="text-xs uppercase tracking-[0.35em] text-white/45">
-              Przewiń, aby poznać ofertę
-            </span>
+            <motion.div
+              className="text-6xl md:text-7xl font-thin leading-tight"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+            >
+              Kompleksowe
+            </motion.div>
           </motion.div>
-        </motion.div>
 
-        {/* Anchors strip */}
+          {/* Line 2 */}
+          <motion.div
+            className="overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.1, delay: 0.55 }}
+          >
+            <motion.div
+              className="text-6xl md:text-7xl font-semibold leading-tight"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
+            >
+              wyceny
+            </motion.div>
+          </motion.div>
+
+          {/* Line 3 */}
+          <motion.div
+            className="overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.1, delay: 0.7 }}
+          >
+            <motion.div
+              className="text-5xl md:text-6xl font-extralight leading-tight"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+            >
+              i kosztorysy
+            </motion.div>
+          </motion.div>
+
+          {/* Short lead */}
+          <motion.p
+            className="mt-8 text-lg font-light text-white/55 max-w-sm leading-relaxed"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+          >
+            Nieruchomości, maszyny, przedsiębiorstwa, środki techniczne —
+            każdy składnik majątku wyceniamy z precyzją.
+          </motion.p>
+        </div>
+
+        {/* Bottom: info strip + navigation strip */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-black/30 backdrop-blur-sm hidden lg:flex"
+          className="absolute bottom-0 left-0 right-0 z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
         >
-          {[
-            { href: "#nieruchomosci", label: "Nieruchomości" },
-            { href: "#maszyny", label: "Maszyny" },
-            { href: "#ruchomosci", label: "Ruchomości" },
-            { href: "#biznes", label: "Biznes" },
-            { href: "#kosztorysy", label: "Kosztorysy" },
-            { href: "#specyficzne", label: "Specyficzne" },
-          ].map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              className="flex-1 py-4 text-center text-xs font-light uppercase tracking-[0.28em] text-white/50 hover:text-[#D4B876] transition-colors duration-300 border-r border-white/10 last:border-r-0"
-            >
-              {label}
-            </a>
-          ))}
+          {/* Info strip */}
+          <div className="flex justify-center border-t border-b border-white/20 bg-black/30 backdrop-blur-sm mb-20">
+            <div className="flex justify-between p-6 w-[90%]">
+              <div className="w-[320px] text-sm font-thin text-white/60 flex items-center">
+                Nieruchomości · Maszyny · Biznes · Kosztorysy
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <div className="text-xs text-white/40 text-center">kategorii wycen</div>
+                <div className="text-2xl text-center font-extralight">[ 6 ]</div>
+              </div>
+              <div className="flex items-center justify-center font-thin text-lg text-white/70">
+                [ 100+ ] usług
+              </div>
+              <div className="text-2xl flex items-center justify-center text-white/80">
+                po prostu TOLEMA.
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation strip */}
+          <nav
+            className="border-t border-white/10 bg-black/50 backdrop-blur-sm hidden lg:flex"
+            aria-label="Skocz do sekcji"
+          >
+            {services.map(({ id, eyebrow }) => (
+              <button
+                key={id}
+                onClick={() => {
+                  const el = document.getElementById(id);
+                  if (!el) return;
+                  const top = el.getBoundingClientRect().top + window.scrollY - 70;
+                  window.scrollTo({ top, behavior: "smooth" });
+                }}
+                className="flex-1 py-3.5 text-center text-xs font-light uppercase tracking-[0.28em] text-white/40 hover:text-[#D4B876] transition-colors duration-300 border-r border-white/10 last:border-r-0 cursor-pointer"
+              >
+                {eyebrow}
+              </button>
+            ))}
+          </nav>
         </motion.div>
       </section>
 
       {/* ── Service sections ─────────────────────────────────── */}
-      {services.map((svc, idx) => (
-        <ServiceSection key={svc.id} {...svc} index={idx} />
+      {services.map((svc) => (
+        <ServiceSection key={svc.id} {...svc} />
       ))}
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#D4B876] py-28 px-8" data-navbar="dark">
-        {/* Subtle parallax blob */}
+      <section
+        className="relative overflow-hidden bg-[#D4B876] py-28 px-8"
+        data-navbar="dark"
+      >
         <div
           aria-hidden
           className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-white/20 blur-3xl pointer-events-none"
@@ -494,8 +640,8 @@ export default function OfferContent() {
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Odpowiemy na wszystkie pytania i przygotujemy indywidualną
-            wycenę dopasowaną do Twoich potrzeb.
+            Odpowiemy na wszystkie pytania i przygotujemy indywidualną wycenę
+            dopasowaną do Twoich potrzeb.
           </motion.p>
 
           <motion.div
