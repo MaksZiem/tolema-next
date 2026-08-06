@@ -37,7 +37,16 @@ export default function Navbar() {
 
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+
+    // Sections can shift after mount (video/image loads, fonts, etc.),
+    // which changes their offsetTop — recompute whenever the page height changes.
+    const resizeObserver = new ResizeObserver(update);
+    resizeObserver.observe(document.body);
+
+    return () => {
+      window.removeEventListener("scroll", update);
+      resizeObserver.disconnect();
+    };
   }, []);
 
   const color = isOpen ? "#000000" : theme === "light" ? "#ffffff" : "#000000";
