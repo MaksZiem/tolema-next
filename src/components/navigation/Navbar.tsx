@@ -93,8 +93,11 @@ export default function Navbar() {
             <Link href={href} className="block">
               {label}
               <div
-                className="absolute bottom-0 left-4 right-4 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"
-                style={{ backgroundColor: color, transition: "background-color 0.35s ease" }}
+                className="absolute bottom-0 left-4 right-4 h-0.5 scale-x-0 group-hover:scale-x-100 origin-left"
+                style={{
+                  backgroundColor: color,
+                  transition: "scale 0.3s ease-out, background-color 0.35s ease",
+                }}
               />
             </Link>
           </li>
