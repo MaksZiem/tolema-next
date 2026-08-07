@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
@@ -94,24 +96,31 @@ export default function Navbar() {
           isOpen ? "block backdrop-blur-sm bg-white/50" : "hidden md:flex"
         }`}
       >
-        {navLinks.map(({ href, label }) => (
-          <li
-            key={href}
-            className="py-2 px-4 cursor-pointer relative group"
-            style={{ color, transition: "color 0.35s ease" }}
-          >
-            <Link href={href} className="block">
-              {label}
-              <div
-                className="absolute bottom-0 left-4 right-4 h-0.5 scale-x-0 group-hover:scale-x-100 origin-left"
-                style={{
-                  backgroundColor: color,
-                  transition: "scale 0.3s ease-out, background-color 0.35s ease",
-                }}
-              />
-            </Link>
-          </li>
-        ))}
+        {navLinks.map(({ href, label }) => {
+          const isActive =
+            href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+          return (
+            <li
+              key={href}
+              className="py-2 px-4 cursor-pointer relative group"
+              style={{ color, transition: "color 0.35s ease" }}
+            >
+              <Link href={href} className="block">
+                {label}
+                <div
+                  className={`absolute bottom-0 left-4 right-4 h-0.5 origin-left ${
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                  style={{
+                    backgroundColor: color,
+                    transition: "scale 0.3s ease-out, background-color 0.35s ease",
+                  }}
+                />
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
