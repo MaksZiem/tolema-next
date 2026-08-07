@@ -25,6 +25,8 @@ export default function Hero({
         tabIndex={-1}
         draggable={false}
         onContextMenu={(e) => e.preventDefault()}
+        poster="/temida-poster.jpg"
+        preload="auto"
         className="fixed top-0 left-0 w-full h-full object-cover -z-10 brightness-50 pointer-events-none select-none"
       >
         <source src="/temida.mp4" type="video/mp4" />
