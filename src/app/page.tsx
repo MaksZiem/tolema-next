@@ -61,8 +61,8 @@ export default function Home() {
     <div className="font-sans relative z-0">
       <Hero />
 
-      <section className="bg-white min-h-screen w-screen flex flex-row" id="o mnie" data-navbar="dark">
-        <div className="flex flex-col w-1/2 bg-white px-16 pt-18">
+      <section className="bg-white min-h-screen w-screen flex flex-col min-[1600px]:flex-row" id="o mnie" data-navbar="dark">
+        <div className="flex flex-col w-full min-[1600px]:w-1/2 bg-white px-6 pt-10 min-[1600px]:px-16 min-[1600px]:pt-18">
           <motion.span
             className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"
             initial={{ opacity: 0, x: -30 }}
@@ -153,10 +153,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-1/2 relative overflow-hidden">
+        <div className="hidden w-full overflow-hidden min-[1600px]:block min-[1600px]:relative min-[1600px]:w-1/2 min-[1600px]:h-auto">
           <motion.div
             style={{ y: cityParallax }}
-            className="absolute inset-0 w-full h-screen"
+            className="absolute inset-0 w-full h-full min-[1600px]:h-screen"
           >
             <img
               src="/city.jpg"

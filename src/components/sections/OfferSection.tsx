@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import PricingButton from "@/components/ui/PricingButton";
+import useIsDesktop from "@/hooks/useIsDesktop";
 
 type Theme = "dark" | "gold" | "light";
 
@@ -96,6 +97,7 @@ export default function OfferSection({
 }: OfferSectionProps) {
   const t = themes[theme];
   const dir = reverse ? -1 : 1;
+  const isDesktop = useIsDesktop();
 
   return (
     <motion.div
@@ -104,76 +106,78 @@ export default function OfferSection({
       className={`sticky top-0 h-screen w-full overflow-hidden ${t.bg} ${t.text} border-t border-gray-300/30`}
     >
       <div
-        className={`mx-auto flex h-full max-w-[1400px] items-center gap-48 px-12 ${reverse ? "flex-row-reverse" : ""}`}
+        className={`mx-auto flex h-full max-w-[1400px] flex-col items-center justify-center gap-8 px-6 min-[1600px]:flex-row min-[1600px]:justify-normal min-[1600px]:gap-48 min-[1600px]:px-12 ${reverse ? "min-[1600px]:flex-row-reverse" : ""}`}
       >
-        {/* ── Media ───────────────────────────────────────────── */}
-        <div className="relative flex h-[64vh] w-1/2 items-center justify-center">
-          {/* Ambient glow */}
-          <div
-            aria-hidden
-            className={`absolute h-[26rem] w-[26rem] rounded-full blur-3xl opacity-60 ${t.glow}`}
-          />
+        {/* ── Media (tylko desktop — na mobile bez filmików) ───── */}
+        {isDesktop && (
+          <div className="relative hidden h-[64vh] w-1/2 items-center justify-center min-[1600px]:flex">
+            {/* Ambient glow */}
+            <div
+              aria-hidden
+              className={`absolute h-[26rem] w-[26rem] rounded-full blur-3xl opacity-60 ${t.glow}`}
+            />
 
-          {/* Kadr główny */}
-          <motion.figure
-            className={`group relative z-10 h-[28rem] w-[38rem] max-w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ${t.ring}`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-          >
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              controls={false}
-              disablePictureInPicture
-              disableRemotePlayback
-              tabIndex={-1}
-              draggable={false}
-              onContextMenu={(e) => e.preventDefault()}
-              className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 pointer-events-none select-none"
+            {/* Kadr główny */}
+            <motion.figure
+              className={`group relative z-10 h-[28rem] w-[38rem] max-w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ${t.ring}`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
             >
-              <source src={videoPrimary} type="video/mp4" />
-            </video>
-            <span
-              className={`pointer-events-none absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm`}
-            >
-              {eyebrow}
-            </span>
-          </motion.figure>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                controls={false}
+                disablePictureInPicture
+                disableRemotePlayback
+                tabIndex={-1}
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
+                className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 pointer-events-none select-none"
+              >
+                <source src={videoPrimary} type="video/mp4" />
+              </video>
+              <span
+                className={`pointer-events-none absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm`}
+              >
+                {eyebrow}
+              </span>
+            </motion.figure>
 
-          {/* Kadr drugi — przesunięty bardziej w prawo */}
-          <motion.figure
-            className={`absolute bottom-2 -right-20 z-20 h-[18rem] w-[24rem] max-w-[60%] overflow-hidden rounded-2xl shadow-2xl ring-1 ${t.ring}`}
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-          >
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="none"
-              controls={false}
-              disablePictureInPicture
-              disableRemotePlayback
-              tabIndex={-1}
-              draggable={false}
-              onContextMenu={(e) => e.preventDefault()}
-              className="h-full w-full object-cover grayscale pointer-events-none select-none"
+            {/* Kadr drugi — przesunięty bardziej w prawo */}
+            <motion.figure
+              className={`absolute bottom-2 -right-20 z-20 h-[18rem] w-[24rem] max-w-[60%] overflow-hidden rounded-2xl shadow-2xl ring-1 ${t.ring}`}
+              initial={{ opacity: 0, y: -30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
             >
-              <source src={videoSecondary} type="video/mp4" />
-            </video>
-          </motion.figure>
-        </div>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="none"
+                controls={false}
+                disablePictureInPicture
+                disableRemotePlayback
+                tabIndex={-1}
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
+                className="h-full w-full object-cover grayscale pointer-events-none select-none"
+              >
+                <source src={videoSecondary} type="video/mp4" />
+              </video>
+            </motion.figure>
+          </div>
+        )}
 
         {/* ── Treść ───────────────────────────────────────────── */}
-        <div className="flex w-1/2 flex-col">
+        <div className="flex w-full flex-col min-[1600px]:w-1/2">
           <motion.span
             className={`text-lg font-medium uppercase tracking-[0.32em] ${t.eyebrow}`}
             initial={{ opacity: 0, x: 40 * dir }}
@@ -185,7 +189,7 @@ export default function OfferSection({
           </motion.span>
 
           <motion.h2
-            className="mt-5 text-6xl font-thin leading-[1.05] tracking-tight"
+            className="mt-5 text-4xl min-[1600px]:text-6xl font-thin leading-[1.05] tracking-tight"
             initial={{ opacity: 0, x: 40 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
@@ -214,7 +218,7 @@ export default function OfferSection({
                 />
               ))}
             </div>
-            <p className={`max-w-[34rem] text-2xl font-light leading-relaxed ${t.sub}`}>
+            <p className={`max-w-[34rem] text-lg min-[1600px]:text-2xl font-light leading-relaxed ${t.sub}`}>
               {lead}
             </p>
           </motion.div>
@@ -238,7 +242,7 @@ export default function OfferSection({
           </motion.ul>
 
           <motion.div
-            className="mt-2 self-start"
+            className="mt-2"
             initial={{ opacity: 0, x: 40 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.35 }}

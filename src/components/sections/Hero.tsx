@@ -4,6 +4,7 @@
 import AnimatedSlogan from "@/components/sections/AnimatedSlogan";
 import SectionArrow from "@/components/navigation/SectionArrow";
 import RandomNumberAnimation from "@/components/ui/RandomNumberAnimation";
+import useIsDesktop from "@/hooks/useIsDesktop";
 
 export default function Hero({
   arrowLabel = "O MNIE",
@@ -12,30 +13,40 @@ export default function Hero({
   arrowLabel?: string;
   arrowTarget?: string;
 }) {
+  const isDesktop = useIsDesktop();
+
   return (
-    <section className="relative h-screen w-full text-white" data-navbar="light">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        controls={false}
-        disablePictureInPicture
-        disableRemotePlayback
-        tabIndex={-1}
-        draggable={false}
-        onContextMenu={(e) => e.preventDefault()}
-        poster="/temida-poster.jpg"
-        preload="auto"
-        className="fixed top-0 left-0 w-full h-full object-cover -z-10 brightness-50 pointer-events-none select-none"
-      >
-        <source src="/temida.mp4" type="video/mp4" />
-      </video>
+    <section className="relative min-h-screen w-full text-white" data-navbar="light">
+      {isDesktop ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          disablePictureInPicture
+          disableRemotePlayback
+          tabIndex={-1}
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
+          poster="/temida-poster.jpg"
+          preload="auto"
+          className="fixed top-0 left-0 w-full h-full object-cover -z-10 brightness-50 pointer-events-none select-none"
+        >
+          <source src="/temida.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          src="/city.jpg"
+          alt=""
+          className="fixed top-0 left-0 w-full h-full object-cover -z-10 grayscale brightness-[0.35] pointer-events-none select-none"
+        />
+      )}
 
       <AnimatedSlogan variant="hero" />
-      <div className="flex justify-center mt-50">
-        <div className="flex justify-between p-8 w-[90%] border-t border-b border-white">
-          <div className="w-[400px] text-l font-thin ">
+      <div className="flex justify-center mt-16 pb-36 min-[1600px]:mt-50 min-[1600px]:pb-0">
+        <div className="flex flex-col items-center text-center min-[1600px]:items-stretch min-[1600px]:text-left min-[1600px]:flex-row min-[1600px]:justify-between gap-6 p-4 min-[1600px]:p-8 w-[90%] border-t border-b border-white">
+          <div className="w-full min-[1600px]:w-[400px] text-l font-thin ">
             Sprawy majątkowe i prawne wymagają spokoju, doświadczenia i
             precyzyjnych rozwiązań — my dostarczamy to, co najważniejsze:
             pewność, bezpieczeństwo i przejrzyste zasady współpracy.
@@ -65,19 +76,6 @@ export default function Hero({
             po prostu TOLEMA.
           </div>
         </div>
-      </div>
-      <div className="absolute bottom-10 right-5 transform flex w-30 h-15 opacity-50 bg-white items-center justify-center box-shadow-md rounded-xl gap-5">
-        <img
-          src="/instagram.png"
-          alt="instagram"
-          title="instgram"
-          className="h-2/3 cursor-pointer "
-        />
-        <img
-          src="/facebook.png"
-          alt="facebook"
-          className="h-2/3 cursor-pointer"
-        />
       </div>
       <SectionArrow label={arrowLabel} targetSection={arrowTarget} />
     </section>
