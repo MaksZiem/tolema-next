@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Footer from "@/components/layout/Footer";
@@ -8,6 +7,7 @@ import Hero from "@/components/sections/Hero";
 import Property from "@/components/sections/Property";
 import TechnicalMeasures from "@/components/sections/TechnicalMeasures";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -158,15 +158,21 @@ export default function Home() {
             style={{ y: cityParallax }}
             className="absolute inset-0 w-full h-full min-[1600px]:h-screen"
           >
-            <img
-              src="/city.jpg"
-              alt="City background"
-              className="w-full h-1/3 object-cover opacity-70 px-5 filter grayscale"
+            <div
+              className="w-full h-1/3 px-5"
               style={{
                 top: "40%",
                 position: "absolute",
               }}
-            />
+            >
+              <Image
+                src="/city.webp"
+                alt="City background"
+                fill
+                sizes="50vw"
+                className="object-cover opacity-70 filter grayscale"
+              />
+            </div>
           </motion.div>
 
           <div className="relative z-10 flex-col items-center py-3">

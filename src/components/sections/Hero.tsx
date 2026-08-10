@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import AnimatedSlogan from "@/components/sections/AnimatedSlogan";
+import HeroMobileSlider from "@/components/sections/HeroMobileSlider";
 import SectionArrow from "@/components/navigation/SectionArrow";
 import RandomNumberAnimation from "@/components/ui/RandomNumberAnimation";
 import useIsDesktop from "@/hooks/useIsDesktop";
@@ -29,18 +29,14 @@ export default function Hero({
           tabIndex={-1}
           draggable={false}
           onContextMenu={(e) => e.preventDefault()}
-          poster="/temida-poster.jpg"
+          poster="/temida-poster.webp"
           preload="auto"
           className="fixed top-0 left-0 w-full h-full object-cover -z-10 brightness-50 pointer-events-none select-none"
         >
           <source src="/temida.mp4" type="video/mp4" />
         </video>
       ) : (
-        <img
-          src="/city.jpg"
-          alt=""
-          className="fixed top-0 left-0 w-full h-full object-cover -z-10 grayscale brightness-[0.35] pointer-events-none select-none"
-        />
+        <HeroMobileSlider />
       )}
 
       <AnimatedSlogan variant="hero" />

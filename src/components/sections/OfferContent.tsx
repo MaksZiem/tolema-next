@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 
@@ -457,12 +458,15 @@ export default function OfferContent() {
           className="absolute inset-0 pointer-events-none"
           aria-hidden
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/city.jpg"
-            alt=""
-            className="absolute right-0 top-0 h-[115%] w-[62%] object-cover grayscale opacity-45"
-          />
+          <div className="absolute right-0 top-0 h-[115%] w-[62%]">
+            <Image
+              src="/city.webp"
+              alt=""
+              fill
+              sizes="62vw"
+              className="object-cover grayscale opacity-45"
+            />
+          </div>
         </motion.div>
 
         {/* Left-to-right gradient: solid black fades into transparent */}
