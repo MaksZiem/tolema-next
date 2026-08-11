@@ -149,6 +149,7 @@ export default function ProcessContent() {
           </motion.p>
 
           <div className="mt-20">
+            <h2 className="sr-only">Etapy wyceny krok po kroku</h2>
             <StepsTimeline />
           </div>
         </div>

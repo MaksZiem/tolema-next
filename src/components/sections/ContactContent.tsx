@@ -244,7 +244,7 @@ export default function ContactContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            Porozmawiajmy <span className="font-semibold">o wycenie</span>
+            Zadaj mi <span className="font-semibold">pytanie dotyczące wyceny</span>
           </motion.h1>
 
           <motion.p

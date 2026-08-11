@@ -54,13 +54,7 @@ export default function Hero({
             </div>
           </div>
           <div className="flex justify-center flex-col font-thin text-2xl">
-            <div>
-              [{" "}
-              <RandomNumberAnimation
-                value={new Date().getFullYear() - 2017}
-              />{" "}
-              ] lat doświadczenia
-            </div>
+            <h1>Rzeczoznawca majątkowy w Grójcu</h1>
           </div>
           <div className="flex justify-end flex-col">
             <div className="text-4xl text-center font-extralight">

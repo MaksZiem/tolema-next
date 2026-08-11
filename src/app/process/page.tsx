@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ProcessContent from "@/components/sections/ProcessContent";
 import { processSteps } from "@/data/processSteps";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Jak przebiega wycena nieruchomości – proces krok po kroku | TOLEMA",
@@ -8,6 +9,9 @@ export const metadata: Metadata = {
     "Poznaj pełny proces wyceny nieruchomości: od zlecenia i zebrania dokumentacji, przez oględziny i analizę rynku, aż po sporządzenie operatu szacunkowego. 9 etapów wyjaśnionych przez rzeczoznawcę majątkowego.",
   keywords:
     "jak przebiega wycena nieruchomości, proces wyceny nieruchomości, etapy wyceny nieruchomości, operat szacunkowy, rzeczoznawca majątkowy, wycena krok po kroku, metody wyceny nieruchomości",
+  alternates: {
+    canonical: `${SITE_URL}/process`,
+  },
   openGraph: {
     title:
       "Jak przebiega wycena nieruchomości – proces krok po kroku | TOLEMA",
@@ -15,6 +19,7 @@ export const metadata: Metadata = {
       "9 etapów wyceny nieruchomości — od zlecenia po operat szacunkowy. Sprawdź, jak pracuje rzeczoznawca majątkowy.",
     type: "website",
     locale: "pl_PL",
+    url: `${SITE_URL}/process`,
   },
 };
 

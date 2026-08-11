@@ -531,56 +531,60 @@ export default function OfferContent() {
             Rzeczoznawca majątkowy
           </motion.span> */}
 
-          {/* Line 1 */}
-          <motion.div
-            className="overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.1, delay: 0.4 }}
-          >
+          {/* Page h1 — display:contents keeps each animated line as its own
+              flex item so the visual layout is unchanged. */}
+          <h1 className="contents">
+            {/* Line 1 */}
             <motion.div
-              className="text-4xl sm:text-6xl md:text-7xl font-thin leading-tight"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+              className="overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.1, delay: 0.4 }}
             >
-              Kompleksowe
+              <motion.div
+                className="text-4xl sm:text-6xl md:text-7xl font-thin leading-tight"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+              >
+                Kompleksowe
+              </motion.div>
             </motion.div>
-          </motion.div>
 
-          {/* Line 2 */}
-          <motion.div
-            className="overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.1, delay: 0.55 }}
-          >
+            {/* Line 2 */}
             <motion.div
-              className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-tight"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
+              className="overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.1, delay: 0.55 }}
             >
-              wyceny
+              <motion.div
+                className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-tight"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
+              >
+                wyceny
+              </motion.div>
             </motion.div>
-          </motion.div>
 
-          {/* Line 3 */}
-          <motion.div
-            className="overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.1, delay: 0.7 }}
-          >
+            {/* Line 3 */}
             <motion.div
-              className="text-3xl sm:text-5xl md:text-6xl font-extralight leading-tight"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+              className="overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.1, delay: 0.7 }}
             >
-              i kosztorysy
+              <motion.div
+                className="text-3xl sm:text-5xl md:text-6xl font-extralight leading-tight"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
+              >
+                i kosztorysy
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </h1>
 
           {/* Short lead */}
           <motion.p
