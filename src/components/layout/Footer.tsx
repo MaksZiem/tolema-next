@@ -48,12 +48,12 @@ const Footer = () => {
       <div className="bg-[#0d0d0d] px-8 py-14 text-white md:px-16 lg:px-24">
         <div className="grid gap-10 md:grid-cols-[0.7fr_0.8fr_1.6fr] md:items-center md:gap-14">
           <div>
-            <div className="mb-4 flex items-center gap-5">
+            {/* <div className="mb-4 flex items-center gap-5">
               <div className="h-px w-12 shrink-0 bg-[#D4B876]" />
               <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
                 Kontakt
               </span>
-            </div>
+            </div> */}
 
             <h2 className="text-2xl font-thin leading-tight tracking-tight md:text-3xl">
               Porozmawiajmy <span className="font-semibold">o wycenie</span>

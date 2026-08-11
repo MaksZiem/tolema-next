@@ -522,14 +522,14 @@ export default function OfferContent() {
 
         {/* Text — left-aligned, different od strony głównej */}
         <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-20 max-w-3xl">
-          <motion.span
+          {/* <motion.span
             className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876] mb-8"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
           >
             Rzeczoznawca majątkowy
-          </motion.span>
+          </motion.span> */}
 
           {/* Line 1 */}
           <motion.div

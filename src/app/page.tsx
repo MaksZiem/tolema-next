@@ -63,7 +63,7 @@ export default function Home() {
 
       <section className="bg-white min-h-screen w-screen flex flex-col min-[1600px]:flex-row" id="o mnie" data-navbar="dark">
         <div className="flex flex-col w-full min-[1600px]:w-1/2 bg-white px-6 pt-10 min-[1600px]:px-16 min-[1600px]:pt-18">
-          <motion.span
+          {/* <motion.span
             className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -71,7 +71,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             Rzeczoznawca majątkowy
-          </motion.span>
+          </motion.span> */}
 
           <motion.h2
             className="mt-3 text-5xl font-thin text-black tracking-tight"
