@@ -44,7 +44,7 @@ export default function Hero({
         <div className="flex flex-col items-center text-center min-[1600px]:items-stretch min-[1600px]:text-left min-[1600px]:flex-row min-[1600px]:justify-between gap-6 p-4 min-[1600px]:p-8 w-[90%] border-t border-b border-white">
           <div className="w-full min-[1600px]:w-[400px] text-l font-thin ">
             Sprawy majątkowe i prawne wymagają spokoju, doświadczenia i
-            precyzyjnych rozwiązań — my dostarczamy to, co najważniejsze:
+            precyzyjnych rozwiązań — dostarczam to, co najważniejsze:
             pewność, bezpieczeństwo i przejrzyste zasady współpracy.
           </div>
           <div className="flex justify-start flex-col">
