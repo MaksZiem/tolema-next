@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
+import SectionArrow from "@/components/navigation/SectionArrow";
 
 // ── Data ──────────────────────────────────────────────────────────────
 
@@ -284,6 +285,10 @@ function ServiceSection({
   // Parallax: background gradient drifts slower than scroll
   const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
+  const [tagsExpanded, setTagsExpanded] = useState(false);
+  const TAGS_MOBILE_LIMIT = 8;
+  const hiddenTagsCount = Math.max(0, tags.length - TAGS_MOBILE_LIMIT);
+
   const tagClass = dark
     ? "border-white/20 text-white/70 hover:border-[#D4B876] hover:text-white"
     : "border-black/15 text-black/65 hover:border-[#D4B876] hover:text-black";
@@ -421,12 +426,46 @@ function ServiceSection({
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.22, delay: 0.08 + i * 0.02 }}
                 viewport={{ once: true }}
-                className={`cursor-default rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${tagClass}`}
+                className={`cursor-default rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${tagClass} ${
+                  i >= TAGS_MOBILE_LIMIT && !tagsExpanded
+                    ? "hidden md:inline-flex"
+                    : ""
+                }`}
               >
                 {tag}
               </motion.span>
             ))}
           </motion.div>
+
+          {/* Mobile-only show more/less toggle — tags stay in the DOM for SEO, this only affects visibility below md */}
+          {hiddenTagsCount > 0 && (
+            <button
+              type="button"
+              onClick={() => setTagsExpanded((v) => !v)}
+              className={`mt-5 flex items-center gap-2.5 self-start text-xs font-light uppercase tracking-[0.28em] transition-colors duration-300 md:hidden cursor-pointer ${
+                dark
+                  ? "text-white/40 hover:text-[#D4B876]"
+                  : "text-black/40 hover:text-[#D4B876]"
+              }`}
+            >
+              {tagsExpanded ? "Pokaż mniej" : `Pokaż więcej +${hiddenTagsCount}`}
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`shrink-0 transition-transform duration-300 ${
+                  tagsExpanded ? "rotate-180" : ""
+                }`}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+          )}
         </div>
       </div>
     </section>
@@ -463,6 +502,7 @@ export default function OfferContent() {
               src="/city.webp"
               alt=""
               fill
+              priority
               sizes="62vw"
               className="object-cover grayscale opacity-45"
             />
@@ -481,7 +521,7 @@ export default function OfferContent() {
         />
 
         {/* Text — left-aligned, different od strony głównej */}
-        <div className="relative z-10 flex flex-col justify-center h-full px-12 md:px-20 max-w-3xl">
+        <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-20 max-w-3xl">
           <motion.span
             className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876] mb-8"
             initial={{ opacity: 0, y: 16 }}
@@ -499,7 +539,7 @@ export default function OfferContent() {
             transition={{ duration: 0.1, delay: 0.4 }}
           >
             <motion.div
-              className="text-6xl md:text-7xl font-thin leading-tight"
+              className="text-4xl sm:text-6xl md:text-7xl font-thin leading-tight"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
@@ -516,7 +556,7 @@ export default function OfferContent() {
             transition={{ duration: 0.1, delay: 0.55 }}
           >
             <motion.div
-              className="text-6xl md:text-7xl font-semibold leading-tight"
+              className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-tight"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
@@ -533,7 +573,7 @@ export default function OfferContent() {
             transition={{ duration: 0.1, delay: 0.7 }}
           >
             <motion.div
-              className="text-5xl md:text-6xl font-extralight leading-tight"
+              className="text-3xl sm:text-5xl md:text-6xl font-extralight leading-tight"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
@@ -561,8 +601,8 @@ export default function OfferContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
         >
-          {/* Info strip */}
-          <div className="flex justify-center border-t border-b border-white/20 bg-black/30 backdrop-blur-sm mb-20">
+          {/* Info strip — ukryty poniżej 900px, za dużo treści jak na mobile */}
+          <div className="hidden justify-center border-t border-b border-white/20 bg-black/30 backdrop-blur-sm mb-20 min-[900px]:flex">
             <div className="flex justify-between p-6 w-[90%]">
               <div className="w-[320px] text-sm font-thin text-white/60 flex items-center">
                 Nieruchomości · Maszyny · Biznes · Kosztorysy
@@ -580,9 +620,9 @@ export default function OfferContent() {
             </div>
           </div>
 
-          {/* Navigation strip */}
+          {/* Navigation strip — spójny breakpoint z paskiem info powyżej */}
           <nav
-            className="border-t border-white/10 bg-black/50 backdrop-blur-sm hidden lg:flex"
+            className="border-t border-white/10 bg-black/50 backdrop-blur-sm hidden min-[900px]:flex"
             aria-label="Skocz do sekcji"
           >
             {services.map(({ id, eyebrow }) => (
@@ -601,6 +641,11 @@ export default function OfferContent() {
             ))}
           </nav>
         </motion.div>
+
+        {/* Mobile-only scroll arrow — na desktopie zastępuje ją pasek nawigacji powyżej. relative z-20, żeby wystawać ponad pełnowysokościowy blok tekstu (z-10) i łapać kliknięcia */}
+        <div className="relative z-20 min-[900px]:hidden">
+          <SectionArrow label="Oferta" targetSection="nieruchomosci" />
+        </div>
       </section>
 
       {/* ── Service sections ─────────────────────────────────── */}
