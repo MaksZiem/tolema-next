@@ -11,29 +11,11 @@ import { faqs } from "@/data/faq";
 
 const iconClass = "w-5 h-5 shrink-0";
 
-const EmailIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={iconClass} aria-hidden="true">
-    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-  </svg>
-);
-
-const PhoneIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={iconClass} aria-hidden="true">
-    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-  </svg>
-);
-
 const ClockIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={iconClass} aria-hidden="true">
     <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
   </svg>
 );
-
-const quickInfo = [
-  { icon: EmailIcon, label: "E-mail", value: "operat23@gmail.com", href: "mailto:operat23@gmail.com" },
-  { icon: PhoneIcon, label: "Telefon", value: "123 123 123", href: "tel:123123123" },
-  { icon: ClockIcon, label: "Godziny pracy", value: "Pon–Pt, 8:00–16:00", href: null },
-];
 
 const topics = [
   "Wycena nieruchomości",
@@ -41,6 +23,21 @@ const topics = [
   "Wycena przedsiębiorstwa",
   "Kosztorys / szacowanie szkód",
   "Inne",
+];
+
+const contactSteps = [
+  {
+    title: "Piszesz",
+    text: "Opisujesz krótko przedmiot i cel wyceny.",
+  },
+  {
+    title: "Odpowiadam",
+    text: "Otrzymujesz zakres prac i wycenę kosztu, zwykle w ciągu 24 godzin.",
+  },
+  {
+    title: "Ustalamy termin",
+    text: "Umawiamy oględziny i realizujemy zlecenie.",
+  },
 ];
 
 // ── Form ──────────────────────────────────────────────────────────────
@@ -286,39 +283,40 @@ export default function ContactContent() {
             className="rounded-2xl bg-[#e8e8e8] px-8 py-10 text-black"
           >
             <span className="text-sm font-medium uppercase tracking-[0.35em] text-black/50">
-              Dane bezpośrednie
+              Jak to wygląda
             </span>
-            <ul className="mt-8 space-y-6">
-              {quickInfo.map(({ icon: Icon, label, value, href }) => {
-                const content = (
-                  <>
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/15 text-black/60">
-                      <Icon />
+
+            <ol className="mt-8 space-y-6">
+              {contactSteps.map((step, i) => (
+                <li key={step.title} className="flex gap-4">
+                  <span className="mt-0.5 shrink-0 text-xs font-medium tabular-nums text-[#D4B876] w-5">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-base font-normal text-black">{step.title}</span>
+                    <span className="text-sm font-light leading-relaxed text-black/55">
+                      {step.text}
                     </span>
-                    <span className="flex flex-col">
-                      <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/40">
-                        {label}
-                      </span>
-                      <span className="text-base font-light text-black">{value}</span>
-                    </span>
-                  </>
-                );
-                return (
-                  <li key={label}>
-                    {href ? (
-                      <a href={href} className="flex items-center gap-4">
-                        {content}
-                      </a>
-                    ) : (
-                      <div className="flex items-center gap-4">{content}</div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-            <p className="mt-10 border-t border-black/10 pt-6 text-sm font-light leading-relaxed text-black/50">
-              Odpowiadam na wiadomości w dni robocze, zwykle w ciągu 24
-              godzin.
+                  </span>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-10 flex items-center gap-4 border-t border-black/10 pt-8">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/15 text-black/60">
+                <ClockIcon />
+              </span>
+              <span className="flex flex-col">
+                <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+                  Godziny pracy
+                </span>
+                <span className="text-base font-light text-black">Pon–Pt, 8:00–16:00</span>
+              </span>
+            </div>
+
+            <p className="mt-6 text-sm font-light leading-relaxed text-black/50">
+              Pełne dane kontaktowe — e-mail, telefon i adres — znajdziesz w
+              stopce poniżej.
             </p>
           </motion.div>
         </div>
