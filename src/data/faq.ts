@@ -29,4 +29,19 @@ export const faqs = [
     answer:
       "Nie — poza nieruchomościami posiadam uprawnienia do wyceny maszyn, urządzeń i środków technicznych, a także przygotowuję wyceny przedsiębiorstw, kosztorysy oraz szacunki szkód.",
   },
+  {
+    question: "Zajmujecie się wycenami do spraw spadkowych i podziału majątku?",
+    answer:
+      "Tak, przygotowuję operaty szacunkowe na potrzeby postępowań spadkowych, działu spadku oraz podziału majątku wspólnego. Wycena może zostać zlecona przez jedną ze stron, wszystkich spadkobierców wspólnie lub na wniosek sądu bądź notariusza — zakres i formę dokumentu ustalam indywidualnie do celu postępowania.",
+  },
+  {
+    question: "Jak wygląda wycena szkody dla ubezpieczyciela?",
+    answer:
+      "Wycenę szkody może zlecić zarówno poszkodowany, jak i ubezpieczyciel — nie trzeba czekać na wycenę towarzystwa ani się do niej ograniczać. Niezależny operat jest szczególnie pomocny, gdy kwota zaproponowana przez ubezpieczyciela wydaje się zaniżona i konieczne jest jej podważenie.",
+  },
+  {
+    question: "Jakie są warunki płatności — czy wystawiacie fakturę?",
+    answer:
+      "Tak, do każdej usługi wystawiam fakturę. Warunki płatności — w tym ewentualną zaliczkę oraz termin rozliczenia — ustalam indywidualnie przy potwierdzaniu zlecenia, jeszcze przed rozpoczęciem prac.",
+  },
 ];
