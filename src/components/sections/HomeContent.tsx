@@ -1,13 +1,17 @@
 "use client";
 
-import Footer from "@/components/layout/Footer";
 import SectionArrow from "@/components/navigation/SectionArrow";
-import Business from "@/components/sections/Business";
 import Hero from "@/components/sections/Hero";
-import Property from "@/components/sections/Property";
-import TechnicalMeasures from "@/components/sections/TechnicalMeasures";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Footer = dynamic(() => import("@/components/layout/Footer"));
+const Business = dynamic(() => import("@/components/sections/Business"));
+const Property = dynamic(() => import("@/components/sections/Property"));
+const TechnicalMeasures = dynamic(
+  () => import("@/components/sections/TechnicalMeasures")
+);
 
 export default function HomeContent() {
   const { scrollY } = useScroll();

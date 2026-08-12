@@ -24,6 +24,7 @@ export default function HeroMobileSlider() {
           src={src}
           alt=""
           fill
+          quality={40}
           preload={i === 0}
           fetchPriority={i === 0 ? "high" : "auto"}
           sizes="100vw"
@@ -32,7 +33,7 @@ export default function HeroMobileSlider() {
           }`}
         />
       ))}
-      <div className="absolute inset-0 bg-gray-8ćć00/30" />
+      <div className="absolute inset-0 bg-gray-800/30" />
     </div>
   );
 }
