@@ -40,7 +40,7 @@ export default function Hero({
       )}
 
       <AnimatedSlogan variant="hero" />
-      <div className="flex justify-center mt-16 pb-36 min-[1600px]:mt-50 min-[1600px]:pb-0">
+      <div className="flex justify-center mt-14 pb-32 min-[1600px]:mt-50 min-[1600px]:pb-0">
         <div className="flex flex-col items-center text-center min-[1600px]:items-stretch min-[1600px]:text-left min-[1600px]:flex-row min-[1600px]:justify-between gap-6 p-4 min-[1600px]:p-8 w-[90%] border-t border-b border-white">
           <div className="w-full min-[1600px]:w-[400px] text-l font-thin ">
             Sprawy majątkowe i prawne wymagają spokoju, doświadczenia i
@@ -53,7 +53,7 @@ export default function Hero({
               [ <RandomNumberAnimation value={2017} /> ]
             </div>
           </div>
-          <div className="flex justify-center flex-col font-thin text-2xl">
+          <div className="flex justify-center flex-col font-normal text-2xl">
             <h1>Rzeczoznawca majątkowy w Grójcu</h1>
           </div>
           <div className="flex justify-end flex-col">
