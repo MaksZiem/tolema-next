@@ -24,14 +24,15 @@ export default function HeroMobileSlider() {
           src={src}
           alt=""
           fill
-          priority={i === 0}
+          preload={i === 0}
+          fetchPriority={i === 0 ? "high" : "auto"}
           sizes="100vw"
-          className={`object-cover grayscale brightness-[0.3] transition-opacity duration-[1500ms] ease-in-out ${
+          className={`object-cover grayscale brightness-[0.2] transition-opacity duration-[1500ms] ease-in-out ${
             i === index ? "opacity-90" : "opacity-0"
           }`}
         />
       ))}
-      <div className="absolute inset-0 bg-gray-700/30" />
+      <div className="absolute inset-0 bg-gray-8ćć00/30" />
     </div>
   );
 }

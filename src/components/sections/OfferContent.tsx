@@ -502,7 +502,8 @@ export default function OfferContent() {
               src="/city.webp"
               alt=""
               fill
-              priority
+              preload
+              fetchPriority="high"
               sizes="62vw"
               className="object-cover grayscale opacity-45"
             />

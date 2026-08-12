@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import PricingButton from "@/components/ui/PricingButton";
 import useIsDesktop from "@/hooks/useIsDesktop";
 
@@ -98,9 +99,18 @@ export default function OfferSection({
   const t = themes[theme];
   const dir = reverse ? -1 : 1;
   const isDesktop = useIsDesktop();
+  const rootRef = useRef<HTMLDivElement>(null);
+  // Sekcja jest "sticky" wewnątrz 300vh kontenera i montuje się od razu przy
+  // starcie strony, więc bez tego oba filmy byłyby pobierane natychmiast
+  // (razem z pozostałymi sekcjami) zamiast dopiero, gdy user się do nich zbliży.
+  const isInView = useInView(rootRef, {
+    once: true,
+    margin: "800px 0px 800px 0px",
+  });
 
   return (
     <motion.div
+      ref={rootRef}
       data-navbar={t.navbar}
       style={{ willChange: "transform" }}
       className={`sticky top-0 h-screen w-full overflow-hidden ${t.bg} ${t.text} border-t border-gray-300/30`}
@@ -125,22 +135,24 @@ export default function OfferSection({
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                controls={false}
-                disablePictureInPicture
-                disableRemotePlayback
-                tabIndex={-1}
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 pointer-events-none select-none"
-              >
-                <source src={videoPrimary} type="video/mp4" />
-              </video>
+              {isInView && (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  controls={false}
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  tabIndex={-1}
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="h-full w-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0 pointer-events-none select-none"
+                >
+                  <source src={videoPrimary} type="video/mp4" />
+                </video>
+              )}
               <span
                 className={`pointer-events-none absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm`}
               >
@@ -156,22 +168,24 @@ export default function OfferSection({
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
-                controls={false}
-                disablePictureInPicture
-                disableRemotePlayback
-                tabIndex={-1}
-                draggable={false}
-                onContextMenu={(e) => e.preventDefault()}
-                className="h-full w-full object-cover grayscale pointer-events-none select-none"
-              >
-                <source src={videoSecondary} type="video/mp4" />
-              </video>
+              {isInView && (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  controls={false}
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  tabIndex={-1}
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="h-full w-full object-cover grayscale pointer-events-none select-none"
+                >
+                  <source src={videoSecondary} type="video/mp4" />
+                </video>
+              )}
             </motion.figure>
           </div>
         )}

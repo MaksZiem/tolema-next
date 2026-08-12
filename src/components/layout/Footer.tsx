@@ -95,6 +95,7 @@ const Footer = () => {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.5084175240618!2d20.874692277261758!3d51.86993138415388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4719229b69ab742b%3A0xcbe63795a46cfed5!2sZdrojowa%2013%2C%2005-600%20Gr%C3%B3jec!5e0!3m2!1spl!2spl!4v1771795004676!5m2!1spl!2spl"
               className="h-full w-full grayscale invert-[0.92] contrast-[0.9]"
               loading="lazy"
+              title="Mapa dojazdu — TOLEMA wyceny, ul. Zdrojowa 13, Grójec"
             />
           </div>
         </div>
