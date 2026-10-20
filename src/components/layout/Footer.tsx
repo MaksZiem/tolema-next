@@ -1,3 +1,7 @@
+import Link from "next/link";
+import CookieSettingsButton from "@/components/consent/CookieSettingsButton";
+import { COMPANY } from "@/lib/site";
+
 // Ikony jako zwykłe SVG (ścieżki z Material Icons) — bez zależności od @mui.
 const iconClass = "w-5 h-5 shrink-0";
 
@@ -23,20 +27,20 @@ const contactItems = [
   {
     icon: EmailIcon,
     label: "E-mail",
-    value: "operat23@gmail.com",
-    href: "mailto:operat23@gmail.com",
+    value: COMPANY.email,
+    href: `mailto:${COMPANY.email}`,
   },
   {
     icon: LocationOnIcon,
     label: "Adres",
-    value: "ul. Zdrojowa 13, 05-600 Grójec",
-    href: null,
+    value: `${COMPANY.street}, ${COMPANY.postalCode} ${COMPANY.city}`,
+    href: COMPANY.mapsUrl,
   },
   {
     icon: PhoneIcon,
     label: "Telefon",
-    value: "123 123 123",
-    href: "tel:123123123",
+    value: COMPANY.phone,
+    href: COMPANY.phoneHref,
   },
 ];
 
@@ -68,7 +72,7 @@ const Footer = () => {
                     <Icon />
                   </span>
                   <span className="flex flex-col">
-                    <span className="text-xs font-medium uppercase tracking-[0.2em] text-white/40">
+                    <span className="text-xs font-medium uppercase tracking-[0.2em] text-white/60">
                       {label}
                     </span>
                     <span className="text-base font-light text-white">{value}</span>
@@ -90,24 +94,45 @@ const Footer = () => {
             })}
           </ul>
 
-          <div className="h-40 overflow-hidden rounded-2xl border border-white/10 md:h-48">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.5084175240618!2d20.874692277261758!3d51.86993138415388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4719229b69ab742b%3A0xcbe63795a46cfed5!2sZdrojowa%2013%2C%2005-600%20Gr%C3%B3jec!5e0!3m2!1spl!2spl!4v1771795004676!5m2!1spl!2spl"
-              className="h-full w-full grayscale invert-[0.92] contrast-[0.9]"
-              loading="lazy"
-              title="Mapa dojazdu — TOLEMA wyceny, ul. Zdrojowa 13, Grójec"
-            />
-          </div>
+          {/* Statyczna mapa zamiast iframe Google Maps — iframe przekazywał Google IP i cookies bez zgody.
+              Aby pokazać zrzut mapy, dodaj public/mapa.webp i ustaw go jako tło tego linku. */}
+          <a
+            href={COMPANY.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Otwórz mapę dojazdu w Google Maps: ${COMPANY.street}, ${COMPANY.city} (nowa karta)`}
+            className="group relative flex h-40 items-end overflow-hidden rounded-2xl border border-white/10 bg-[#161616] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:28px_28px] p-6 md:h-48"
+          >
+            <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[70%] text-[#D4B876] [&_svg]:h-10 [&_svg]:w-10">
+              <LocationOnIcon />
+            </span>
+            <span className="relative flex w-full items-center justify-between gap-4">
+              <span className="text-sm font-light text-white/80">
+                {COMPANY.street}, {COMPANY.city}
+              </span>
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#D4B876] transition-transform duration-300 group-hover:translate-x-1">
+                Otwórz w Google Maps →
+              </span>
+            </span>
+          </a>
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-between gap-2 border-t border-white/10 bg-black px-8 py-5 text-white md:flex-row md:px-16 lg:px-24">
+      <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 bg-black px-8 py-5 text-white md:flex-row md:px-16 lg:px-24">
         <span className="text-xs font-light uppercase tracking-[0.3em] text-white/70">
-          &copy; {year} TOLEMA wyceny
+          &copy; {year} TOLEMA wyceny · Wszelkie prawa zastrzeżone
         </span>
-        <span className="text-xs font-light uppercase tracking-[0.3em] text-white/40">
-          Wszelkie prawa zastrzeżone
+        <span className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-light uppercase tracking-[0.2em] text-white/70">
+          <Link href="/polityka-prywatnosci" className="hover:text-white">
+            Polityka prywatności
+          </Link>
+          <CookieSettingsButton className="uppercase tracking-[0.2em] hover:text-white" />
         </span>
+      </div>
+
+      <div className="bg-black px-8 pb-6 text-center text-[11px] font-light leading-relaxed text-white/60 md:px-16 md:text-left lg:px-24">
+        {COMPANY.name}, {COMPANY.street}, {COMPANY.postalCode} {COMPANY.city} · {COMPANY.court} · KRS{" "}
+        {COMPANY.krs} · NIP {COMPANY.nip} · REGON {COMPANY.regon} · Kapitał zakładowy {COMPANY.shareCapital}
       </div>
     </footer>
   );

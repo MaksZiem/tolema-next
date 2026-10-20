@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useActionState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import { sendContactMessage, type ContactFormState } from "@/app/contact/actions";
 import { faqs } from "@/data/faq";
@@ -58,7 +59,7 @@ function ContactForm() {
   }, [state]);
 
   const inputClass =
-    "w-full border-b border-black/15 bg-transparent py-3 text-black placeholder:text-black/35 focus:border-[#D4B876] focus:outline-none transition-colors duration-300 font-light";
+    "w-full border-b border-black/15 bg-transparent py-3 text-black placeholder:text-black/45 focus:border-[#D4B876] focus:outline-none transition-colors duration-300 font-light";
 
   return (
     <form ref={formRef} action={formAction} className="flex flex-col gap-6">
@@ -74,13 +75,13 @@ function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+          <label htmlFor="name" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/60">
             Imię i nazwisko *
           </label>
           <input id="name" name="name" type="text" required className={inputClass} placeholder="Jan Kowalski" />
         </div>
         <div>
-          <label htmlFor="email" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+          <label htmlFor="email" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/60">
             E-mail *
           </label>
           <input id="email" name="email" type="email" required className={inputClass} placeholder="jan@przyklad.pl" />
@@ -89,13 +90,13 @@ function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+          <label htmlFor="phone" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/60">
             Telefon
           </label>
           <input id="phone" name="phone" type="tel" className={inputClass} placeholder="123 123 123" />
         </div>
         <div>
-          <label htmlFor="topic" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+          <label htmlFor="topic" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/60">
             Temat
           </label>
           <select id="topic" name="topic" defaultValue="" className={`${inputClass} cursor-pointer`}>
@@ -112,7 +113,7 @@ function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+        <label htmlFor="message" className="mb-1 block text-xs font-medium uppercase tracking-[0.2em] text-black/60">
           Wiadomość *
         </label>
         <textarea
@@ -150,6 +151,15 @@ function ContactForm() {
           </p>
         )}
       </div>
+
+      <p className="text-xs font-light leading-relaxed text-black/60">
+        Administratorem danych podanych w formularzu jest TOLEMA NIERUCHOMOŚCI sp. z o.o. Dane
+        przetwarzamy, aby odpowiedzieć na Twoje zapytanie. Więcej, w tym o Twoich prawach:{" "}
+        <Link href="/polityka-prywatnosci" className="underline underline-offset-2">
+          Polityka prywatności
+        </Link>
+        .
+      </p>
     </form>
   );
 }
@@ -307,7 +317,7 @@ export default function ContactContent() {
                 <ClockIcon />
               </span>
               <span className="flex flex-col">
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/40">
+                <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/60">
                   Godziny pracy
                 </span>
                 <span className="text-base font-light text-black">Pon–Pt, 8:00–16:00</span>

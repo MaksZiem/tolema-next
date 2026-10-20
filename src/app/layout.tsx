@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navigation/Navbar";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import CookieConsent from "@/components/consent/CookieConsent";
+import { SITE_URL, SITE_NAME, COMPANY } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,13 +54,15 @@ const localBusinessJsonLd = {
   description:
     "Rzeczoznawca majątkowy — wyceny nieruchomości, maszyn, środków technicznych i przedsiębiorstw.",
   url: SITE_URL,
-  email: "operat23@gmail.com",
-  telephone: "+48123123123",
+  legalName: COMPANY.name,
+  taxID: COMPANY.nip,
+  email: COMPANY.email,
+  telephone: "+48737535554",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "ul. Zdrojowa 13",
-    postalCode: "05-600",
-    addressLocality: "Grójec",
+    streetAddress: COMPANY.street,
+    postalCode: COMPANY.postalCode,
+    addressLocality: COMPANY.city,
     addressCountry: "PL",
   },
   areaServed: {
@@ -82,6 +85,7 @@ export default function RootLayout({
         />
         <Navbar />
         {children}
+        <CookieConsent />
       </body>
     </html>
   );
