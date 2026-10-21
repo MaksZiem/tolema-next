@@ -38,7 +38,7 @@ const Footer = () => {
               <li key={label}>
                 <a href={href} className="group flex flex-col">
                   <span className="text-sm font-light text-white/60">{label}</span>
-                  <span className="text-lg font-light text-white underline decoration-white/0 underline-offset-4 transition-colors duration-300 group-hover:decoration-[#D4B876]">
+                  <span className="text-lg font-light text-white underline decoration-[#D4B876] decoration-1 underline-offset-[6px] transition-colors duration-300 group-hover:text-[#D4B876]">
                     {value}
                   </span>
                 </a>

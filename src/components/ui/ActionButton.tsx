@@ -74,6 +74,14 @@ export default function ActionButton({
     </>
   );
 
+  if (rest.href !== undefined && !rest.href.startsWith("/")) {
+    return (
+      <a href={rest.href} className={classes}>
+        {content}
+      </a>
+    );
+  }
+
   if (rest.href !== undefined) {
     return (
       <Link href={rest.href} className={classes}>
