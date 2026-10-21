@@ -336,7 +336,7 @@ function ServiceSection({
 
           {/* Title */}
           <motion.h2
-            className="text-[clamp(1.5rem,9.5vw,2.25rem)] md:text-5xl lg:text-[clamp(2.5rem,4.4vw,3.75rem)] font-thin leading-[1.05] tracking-tight text-balance"
+            className="text-4xl max-md:text-[clamp(1.5rem,9.5vw,2.25rem)] max-md:text-balance md:text-5xl lg:text-6xl font-thin leading-[1.05] tracking-tight"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.07 }}
@@ -488,7 +488,7 @@ export default function OfferContent() {
       {/* ── Hero — bez wideo, split: tekst lewej / miasto prawej ─ */}
       <section
         ref={heroRef}
-        className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-black text-white"
+        className="relative h-screen w-full overflow-hidden bg-black text-white max-md:flex max-md:h-auto max-md:min-h-[100svh] max-md:flex-col"
         data-navbar="light"
       >
         {/* City image — right 60%, parallax */}
@@ -522,7 +522,7 @@ export default function OfferContent() {
         />
 
         {/* Text — left-aligned, different od strony głównej */}
-        <div className="relative z-10 flex flex-1 flex-col justify-center px-8 pt-24 pb-10 md:[@media(max-height:700px)]:pt-20 md:[@media(max-height:700px)]:pb-6 md:px-20 max-w-3xl">
+        <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-20 max-w-3xl max-md:h-auto max-md:flex-1 max-md:pt-24 max-md:pb-10">
           {/* <motion.span
             className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876] mb-8"
             initial={{ opacity: 0, y: 16 }}
@@ -543,7 +543,7 @@ export default function OfferContent() {
               transition={{ duration: 0.1, delay: 0.4 }}
             >
               <motion.div
-                className="text-4xl sm:text-6xl md:text-7xl md:[@media(max-height:780px)]:text-6xl md:[@media(max-height:640px)]:text-5xl font-thin leading-tight"
+                className="text-4xl sm:text-6xl md:text-7xl font-thin leading-tight"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
@@ -560,7 +560,7 @@ export default function OfferContent() {
               transition={{ duration: 0.1, delay: 0.55 }}
             >
               <motion.div
-                className="text-4xl sm:text-6xl md:text-7xl md:[@media(max-height:780px)]:text-6xl md:[@media(max-height:640px)]:text-5xl font-semibold leading-tight"
+                className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-tight"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.65 }}
@@ -577,7 +577,7 @@ export default function OfferContent() {
               transition={{ duration: 0.1, delay: 0.7 }}
             >
               <motion.div
-                className="text-3xl sm:text-5xl md:text-6xl md:[@media(max-height:780px)]:text-5xl md:[@media(max-height:640px)]:text-4xl font-extralight leading-tight"
+                className="text-3xl sm:text-5xl md:text-6xl font-extralight leading-tight"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
@@ -589,7 +589,7 @@ export default function OfferContent() {
 
           {/* Short lead */}
           <motion.p
-            className="mt-8 md:[@media(max-height:780px)]:mt-5 text-lg font-light text-white/55 max-w-sm leading-relaxed"
+            className="mt-8 text-lg font-light text-white/55 max-w-sm leading-relaxed"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -601,13 +601,13 @@ export default function OfferContent() {
 
         {/* Bottom: info strip + navigation strip */}
         <motion.div
-          className="relative z-10"
+          className="absolute bottom-0 left-0 right-0 z-10 max-md:relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
         >
           {/* Info strip — ukryty poniżej 900px, za dużo treści jak na mobile */}
-          <div className="hidden justify-center border-t border-b border-white/20 bg-black/30 backdrop-blur-sm mb-4 [@media(min-height:700px)]:mb-10 [@media(min-height:860px)]:mb-20 min-[900px]:flex">
+          <div className="hidden justify-center border-t border-b border-white/20 bg-black/30 backdrop-blur-sm mb-20 min-[900px]:flex">
             <div className="flex justify-between p-6 w-[90%]">
               <div className="w-[320px] text-sm font-thin text-white/60 flex items-center">
                 Nieruchomości · Maszyny · Biznes · Kosztorysy
@@ -639,7 +639,7 @@ export default function OfferContent() {
                   const top = el.getBoundingClientRect().top + window.scrollY - 70;
                   window.scrollTo({ top, behavior: "smooth" });
                 }}
-                className="flex-1 px-2 py-3.5 text-center text-[0.6875rem] font-light uppercase tracking-[0.1em] 2xl:text-xs 2xl:tracking-[0.14em] min-[1800px]:tracking-[0.28em] text-white/40 hover:text-[#D4B876] transition-colors duration-300 border-r border-white/10 last:border-r-0 cursor-pointer"
+                className="flex-1 py-3.5 text-center text-xs font-light uppercase tracking-[0.28em] text-white/40 hover:text-[#D4B876] transition-colors duration-300 border-r border-white/10 last:border-r-0 cursor-pointer"
               >
                 {eyebrow}
               </button>
@@ -648,8 +648,8 @@ export default function OfferContent() {
         </motion.div>
 
         {/* Mobile-only scroll arrow — na desktopie zastępuje ją pasek nawigacji powyżej. relative z-20, żeby wystawać ponad pełnowysokościowy blok tekstu (z-10) i łapać kliknięcia */}
-        <div className="relative z-20 flex justify-center pb-8 min-[900px]:hidden">
-          <SectionArrow inline label="Oferta" targetSection="nieruchomosci" />
+        <div className="relative z-20 min-[900px]:hidden max-md:flex max-md:justify-center max-md:pb-8">
+          <SectionArrow inline="mobile" label="Oferta" targetSection="nieruchomosci" />
         </div>
       </section>
 

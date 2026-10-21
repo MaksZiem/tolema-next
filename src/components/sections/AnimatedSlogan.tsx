@@ -14,9 +14,9 @@ const lines = [
 // więc tekst nigdy nie wychodzi poza viewport (był na sztywnych pikselach
 // dobranych pod ~1920px, co powodowało poziomy scroll poniżej tej szerokości).
 const heroWrapperClasses = [
-  "relative z-10 flex justify-center text-center px-6 pt-24 max-md:mt-auto text-3xl sm:text-4xl font-normal [@media(max-height:700px)]:pt-20 [@media(min-height:800px)]:pt-28 min-[1600px]:justify-start min-[1600px]:text-left min-[1600px]:px-0 min-[1600px]:pt-[clamp(6rem,24svh,17.5rem)] min-[1600px]:pl-[clamp(2rem,66.67vw,80rem)] min-[1600px]:text-[clamp(1.75rem,3.75vw,4.5rem)] min-[1600px]:leading-[1.05]",
-  "relative z-10 flex justify-center text-center px-6 pt-1 text-2xl sm:text-3xl sm:pt-2 font-bold min-[1600px]:justify-start min-[1600px]:text-left min-[1600px]:px-0 min-[1600px]:pl-[clamp(2rem,58.33vw,70rem)] min-[1600px]:pt-5 min-[1600px]:text-[clamp(1.5rem,3.125vw,3.75rem)] min-[1600px]:leading-[1.05]",
-  "relative z-10 flex justify-center text-center px-6 pt-2 text-2xl sm:text-3xl sm:pt-4 font-extralight min-[1600px]:justify-start min-[1600px]:text-left min-[1600px]:px-0 min-[1600px]:pl-[clamp(2rem,58.33vw,70rem)] min-[1600px]:pt-[clamp(1rem,3svh,2.5rem)] min-[1600px]:text-[clamp(1.5rem,3.125vw,3.75rem)] min-[1600px]:leading-[1.05]",
+  "relative z-10 flex justify-center text-center px-6 pt-28 text-4xl font-normal max-md:mt-auto max-md:pt-24 max-sm:text-3xl max-md:[@media(max-height:700px)]:pt-20 max-md:[@media(min-height:800px)]:pt-28 min-[1600px]:justify-start min-[1600px]:text-left min-[1600px]:px-0 min-[1600px]:pt-[clamp(6rem,26svh,17.5rem)] min-[1600px]:pl-[clamp(2rem,66.67vw,80rem)] min-[1600px]:text-[clamp(1.75rem,3.75vw,4.5rem)] min-[1600px]:leading-[1.05]",
+  "relative z-10 flex justify-center text-center px-6 pt-2 text-3xl max-sm:pt-1 max-sm:text-2xl font-bold min-[1600px]:justify-start min-[1600px]:text-left min-[1600px]:px-0 min-[1600px]:pl-[clamp(2rem,58.33vw,70rem)] min-[1600px]:pt-5 min-[1600px]:text-[clamp(1.5rem,3.125vw,3.75rem)] min-[1600px]:leading-[1.05]",
+  "relative z-10 flex justify-center text-center px-6 pt-4 text-3xl max-sm:pt-2 max-sm:text-2xl font-extralight min-[1600px]:justify-start min-[1600px]:text-left min-[1600px]:px-0 min-[1600px]:pl-[clamp(2rem,58.33vw,70rem)] min-[1600px]:pt-10 min-[1600px]:text-[clamp(1.5rem,3.125vw,3.75rem)] min-[1600px]:leading-[1.05]",
 ];
 
 const inlineWrapperClasses = [

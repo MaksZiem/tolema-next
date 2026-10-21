@@ -35,7 +35,7 @@ const SectionArrow = ({
   label?: string;
   targetSection?: string;
   color?: string;
-  inline?: boolean;
+  inline?: boolean | "mobile";
 }) => {
   const scrollToSection = () => {
     if (targetSection) {
@@ -65,7 +65,11 @@ const SectionArrow = ({
         type="button"
         aria-label={`Przewiń do sekcji: ${label}`}
         className={`${
-          inline ? "relative mx-auto" : "absolute bottom-8 left-1/2 -translate-x-1/2"
+          inline === "mobile"
+            ? "relative mx-auto md:absolute md:bottom-8 md:left-1/2 md:mx-0 md:-translate-x-1/2"
+            : inline
+              ? "relative mx-auto"
+              : "absolute bottom-8 left-1/2 -translate-x-1/2"
         } cursor-pointer flex flex-col items-center`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
