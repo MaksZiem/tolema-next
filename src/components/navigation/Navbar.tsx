@@ -100,7 +100,7 @@ export default function Navbar() {
           className="text-2xl font-bold min-[900px]:text-3xl"
           style={{ color, transition: isOpen ? "color 0.25s ease" : "color 0ms" }}
         >
-          TOLEMA wyceny
+          TOLEMA wyceny <span className="font-thin">sp. z o.o.</span>
         </div>
       </Link>
 

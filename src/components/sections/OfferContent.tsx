@@ -330,7 +330,7 @@ function ServiceSection({
         {/* ── Tags ─────────────────────────────────────────── */}
         <div className={`flex flex-col ${reverse ? "lg:order-1" : "lg:order-2"}`}>
           {/* Tags label */}
-          <h3 className="mb-6 text-2xl font-thin tracking-tight lg:mt-3">
+          <h3 className="mb-6 text-2xl font-semibold tracking-tight lg:mt-3">
             Zakres usług
           </h3>
 
