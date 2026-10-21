@@ -17,7 +17,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  // Route changed — whatever link was tapped, the menu has done its job.
+  // Route changed - whatever link was tapped, the menu has done its job.
   // Adjusted during render (not in an effect) to avoid an extra render pass.
   const [menuPathname, setMenuPathname] = useState(pathname);
   if (pathname !== menuPathname) {
@@ -37,7 +37,7 @@ export default function Navbar() {
     };
 
     const update = () => {
-      // 72px ≈ navbar height — find what section sits just below the bar
+      // 72px ≈ navbar height - find what section sits just below the bar
       const threshold = window.scrollY + 72;
       const sections = Array.from(
         document.querySelectorAll<HTMLElement>("[data-navbar]")
@@ -57,7 +57,7 @@ export default function Navbar() {
     window.addEventListener("scroll", update, { passive: true });
 
     // Sections can shift after mount (video/image loads, fonts, etc.),
-    // which changes their offsetTop — recompute whenever the page height changes.
+    // which changes their offsetTop - recompute whenever the page height changes.
     const resizeObserver = new ResizeObserver(update);
     resizeObserver.observe(document.body);
 
@@ -163,16 +163,9 @@ export default function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="fixed inset-0 top-0 z-40 flex flex-col bg-[#0d0d0d]/98 backdrop-blur-xl min-[900px]:hidden"
+          className="fixed inset-0 top-0 z-40 flex flex-col bg-[#0d0d0d] min-[900px]:hidden"
         >
           <div className="flex flex-1 flex-col justify-center px-8">
-            <div className="mb-10 flex items-center gap-5">
-              <div className="h-px w-12 shrink-0 bg-[#D4B876]" />
-              <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
-                Menu
-              </span>
-            </div>
-
             <ul className="flex flex-col">
               {navLinks.map(({ href, label }, i) => {
                 const isActive =
@@ -188,17 +181,10 @@ export default function Navbar() {
                   >
                     <Link
                       href={href}
-                      className="group flex items-baseline gap-4 py-4"
+                      className="group block py-4"
                     >
                       <span
-                        className={`w-6 shrink-0 text-xs font-medium tabular-nums transition-colors duration-300 ${
-                          isActive ? "text-[#D4B876]" : "text-white/40"
-                        }`}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={`text-3xl font-thin uppercase tracking-wide transition-colors duration-300 ${
+                        className={`text-3xl font-thin transition-colors duration-300 ${
                           isActive
                             ? "text-[#D4B876]"
                             : "text-white group-hover:text-[#D4B876]"
@@ -217,7 +203,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.35 }}
-            className="flex items-center justify-between px-8 py-8 text-xs font-light uppercase tracking-[0.3em] text-white/40"
+            className="flex items-center justify-between px-8 py-8 text-sm font-light text-white/60"
           >
             <span>TOLEMA wyceny</span>
             <a

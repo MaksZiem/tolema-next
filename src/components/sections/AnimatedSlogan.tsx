@@ -10,7 +10,7 @@ const lines = [
 ];
 
 // Padding-left i font-size na md+ skalują się razem jako % szerokości ekranu
-// (clamp z jednostką vw) — proporcje zostają identyczne na każdej szerokości,
+// (clamp z jednostką vw) - proporcje zostają identyczne na każdej szerokości,
 // więc tekst nigdy nie wychodzi poza viewport (był na sztywnych pikselach
 // dobranych pod ~1920px, co powodowało poziomy scroll poniżej tej szerokości).
 const heroWrapperClasses = [

@@ -1,7 +1,7 @@
 export const SITE_URL = "https://zmax-dev.pl";
 export const SITE_NAME = "TOLEMA wyceny";
 
-// Dane spółki — wymagane na stronie (art. 206 KSH, art. 5 UŚUDE) i w polityce prywatności.
+// Dane spółki - wymagane na stronie (art. 206 KSH, art. 5 UŚUDE) i w polityce prywatności.
 export const COMPANY = {
   name: "TOLEMA NIERUCHOMOŚCI sp. z o.o.",
   street: "ul. Zdrojowa 13",

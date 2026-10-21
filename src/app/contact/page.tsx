@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kontakt | TOLEMA – Rzeczoznawca majątkowy",
     description:
-      "Napisz w sprawie wyceny nieruchomości, maszyn lub przedsiębiorstwa — odpowiadam w ciągu 24 godzin.",
+      "Napisz w sprawie wyceny nieruchomości, maszyn lub przedsiębiorstwa - odpowiadam w ciągu 24 godzin.",
     type: "website",
     locale: "pl_PL",
     url: `${SITE_URL}/contact`,

@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
                   <td className={td}>Formularz kontaktowy, e-mail, telefon</td>
                   <td className={td}>imię i nazwisko, e-mail, telefon (opcjonalnie), treść wiadomości</td>
                   <td className={td}>
-                    odpowiedź na zapytanie i przygotowanie oferty — art. 6 ust. 1 lit. b RODO (działania przed
+                    odpowiedź na zapytanie i przygotowanie oferty - art. 6 ust. 1 lit. b RODO (działania przed
                     zawarciem umowy na Twoje żądanie) oraz lit. f RODO (prawnie uzasadniony interes:
                     prowadzenie korespondencji)
                   </td>
@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
                   <td className={td}>Realizacja zlecenia</td>
                   <td className={td}>dane z umowy i dokumentacji wyceny</td>
                   <td className={td}>
-                    wykonanie umowy, rozliczenia oraz obowiązki podatkowe i zawodowe — art. 6 ust. 1 lit. b i
+                    wykonanie umowy, rozliczenia oraz obowiązki podatkowe i zawodowe - art. 6 ust. 1 lit. b i
                     lit. c RODO
                   </td>
                   <td className={td}>
@@ -97,7 +97,7 @@ export default function PrivacyPolicyPage() {
                     dane o urządzeniu i przeglądarce, przybliżona lokalizacja, odwiedzone podstrony,
                     identyfikatory cookies
                   </td>
-                  <td className={td}>analiza ruchu na stronie — art. 6 ust. 1 lit. a RODO (Twoja zgoda)</td>
+                  <td className={td}>analiza ruchu na stronie - art. 6 ust. 1 lit. a RODO (Twoja zgoda)</td>
                   <td className={td}>2 miesiące</td>
                 </tr>
               </tbody>
@@ -112,20 +112,20 @@ export default function PrivacyPolicyPage() {
           <h2 className={h2}>3. Odbiorcy danych</h2>
           <p className={p}>Twoje dane mogą być przekazywane podmiotom, które świadczą dla nas usługi:</p>
           <ul className="mb-4 list-disc space-y-2 pl-6 text-base font-light leading-relaxed text-black/75">
-            <li>Vercel Inc. (USA) — hosting strony,</li>
-            <li>Resend (USA) — wysyłka wiadomości z formularza kontaktowego,</li>
+            <li>Vercel Inc. (USA) - hosting strony,</li>
+            <li>Resend (USA) - wysyłka wiadomości z formularza kontaktowego,</li>
             <li>
-              Google (Google Ireland Ltd. / Google LLC) — poczta e-mail oraz, po wyrażeniu zgody, Google
+              Google (Google Ireland Ltd. / Google LLC) - poczta e-mail oraz, po wyrażeniu zgody, Google
               Analytics,
             </li>
-            <li>biuro rachunkowe i podmioty świadczące obsługę prawną — w zakresie niezbędnym przy zleceniach.</li>
+            <li>biuro rachunkowe i podmioty świadczące obsługę prawną - w zakresie niezbędnym przy zleceniach.</li>
           </ul>
 
           <h2 className={h2}>4. Przekazywanie danych poza Europejski Obszar Gospodarczy</h2>
           <p className={p}>
             Część dostawców ma siedzibę w USA. Przekazanie danych odbywa się na podstawie decyzji Komisji
             Europejskiej z 10 lipca 2023 r. w sprawie ram ochrony danych UE–USA (EU-US Data Privacy
-            Framework) — w zakresie, w jakim dostawca do nich przystąpił — a w pozostałym zakresie na
+            Framework) - w zakresie, w jakim dostawca do nich przystąpił - a w pozostałym zakresie na
             podstawie standardowych klauzul umownych zatwierdzonych przez Komisję (art. 46 ust. 2 lit. c
             RODO).
           </p>
@@ -140,7 +140,7 @@ export default function PrivacyPolicyPage() {
             <li>przenoszenia danych,</li>
             <li>sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie,</li>
             <li>
-              wycofania zgody w dowolnym momencie — bez wpływu na zgodność z prawem przetwarzania przed jej
+              wycofania zgody w dowolnym momencie - bez wpływu na zgodność z prawem przetwarzania przed jej
               wycofaniem.
             </li>
           </ul>

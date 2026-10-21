@@ -6,7 +6,7 @@ import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import { processSteps } from "@/data/processSteps";
 
-// ── Step item — number node lights up as it crosses the viewport centre ─
+// ── Step item - number node lights up as it crosses the viewport centre ─
 
 function StepItem({
   step,
@@ -36,7 +36,7 @@ function StepItem({
             transition={{ duration: 0.4 }}
             className="text-base md:text-lg font-light tabular-nums"
           >
-            {String(index + 1).padStart(2, "0")}
+            {index + 1}
           </motion.span>
         </motion.div>
       </div>
@@ -73,7 +73,7 @@ function StepItem({
   );
 }
 
-// ── Timeline — vertical gold line draws in as the section is scrolled ──
+// ── Timeline - vertical gold line draws in as the section is scrolled ──
 
 function StepsTimeline() {
   const containerRef = useRef<HTMLOListElement>(null);
@@ -90,7 +90,7 @@ function StepsTimeline() {
         aria-hidden
         className="absolute left-7 md:left-8 top-2 bottom-2 w-px bg-black/10"
       />
-      {/* Progress line — reveals as you scroll through the steps */}
+      {/* Progress line - reveals as you scroll through the steps */}
       <motion.div
         aria-hidden
         style={{ height: lineHeight }}
@@ -116,18 +116,6 @@ export default function ProcessContent() {
         data-navbar="dark"
       >
         <div className="mx-auto max-w-[1000px]">
-          <motion.div
-            className="mb-6 flex items-center gap-5"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="h-px w-12 shrink-0 bg-[#D4B876]" />
-            <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
-              Proces wyceny
-            </span>
-          </motion.div>
-
           <motion.h1
             className="max-w-2xl text-4xl font-thin leading-[1.05] tracking-tight md:text-5xl"
             initial={{ opacity: 0, y: 16 }}
@@ -144,8 +132,8 @@ export default function ProcessContent() {
             transition={{ duration: 0.7, delay: 0.4 }}
           >
             Dziewięć etapów, które dzielą zlecenie od gotowego operatu
-            szacunkowego. Każda wycena nieruchomości — niezależnie od jej celu
-            — przebiega według tego samego, uporządkowanego procesu.
+            szacunkowego. Każda wycena nieruchomości - niezależnie od jej celu
+            - przebiega według tego samego, uporządkowanego procesu.
           </motion.p>
 
           <div className="mt-20">
@@ -160,24 +148,9 @@ export default function ProcessContent() {
         className="relative overflow-hidden bg-[#D4B876] px-8 py-28"
         data-navbar="dark"
       >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-white/20 blur-3xl"
-        />
-
         <div className="relative z-10 mx-auto max-w-[860px] text-center">
-          <motion.span
-            className="text-sm font-medium uppercase tracking-[0.38em] text-black/55"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Rozpocznij współpracę
-          </motion.span>
-
           <motion.h2
-            className="mt-5 text-5xl font-thin tracking-tight text-black"
+            className="text-5xl font-thin tracking-tight text-black"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -193,7 +166,7 @@ export default function ProcessContent() {
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Skontaktuj się, aby ustalić cel wyceny i zakres dokumentacji —
+            Skontaktuj się, aby ustalić cel wyceny i zakres dokumentacji -
             resztą procesu zajmę się kompleksowo.
           </motion.p>
 

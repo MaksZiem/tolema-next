@@ -39,7 +39,7 @@ export default function PricingButton({
             className={`absolute inset-0 -translate-x-full transition-transform duration-500 ease-out group-hover:translate-x-0 ${v.fill}`}
           />
 
-          {/* Treść — kolor zmienia się na hover */}
+          {/* Treść - kolor zmienia się na hover */}
           <span
             className={`relative z-10 flex items-center gap-3 transition-colors duration-300 ${v.text} ${v.hoverText}`}
           >

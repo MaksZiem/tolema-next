@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 const CustomArrowDown = ({
   size = 44,
   style,
+  className,
 }: {
   size?: number;
   style?: React.CSSProperties;
+  className?: string;
 }) => (
   <svg
     width={size}
@@ -15,11 +17,13 @@ const CustomArrowDown = ({
     viewBox="0 0 24 24"
     fill="none"
     style={style}
+    className={className}
+    aria-hidden="true"
   >
     <path
       d="M7 10L12 15L17 10"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="1.25"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -48,52 +52,34 @@ const SectionArrow = ({
     }
   };
 
-  const shadowColor =
-    color === "white"
-      ? "rgba(255,255,255,0.55)"
-      : "rgba(0,0,0,0.35)";
-
   return (
-    <>
-      <style>{`
-        @keyframes arrow-float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(8px); }
-        }
-      `}</style>
-      <motion.button
-        type="button"
-        aria-label={`Przewiń do sekcji: ${label}`}
-        className={`${
-          inline === "mobile"
-            ? "relative mx-auto md:absolute md:bottom-8 md:left-1/2 md:mx-0 md:-translate-x-1/2"
-            : inline
-              ? "relative mx-auto"
-              : "absolute bottom-8 left-1/2 -translate-x-1/2"
-        } cursor-pointer flex flex-col items-center`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        onClick={scrollToSection}
+    <motion.button
+      type="button"
+      aria-label={`Przewiń do sekcji: ${label}`}
+      className={`${
+        inline === "mobile"
+          ? "relative mx-auto md:absolute md:bottom-8 md:left-1/2 md:mx-0 md:-translate-x-1/2"
+          : inline
+            ? "relative mx-auto"
+            : "absolute bottom-8 left-1/2 -translate-x-1/2"
+      } group cursor-pointer flex flex-col items-center`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      onClick={scrollToSection}
+    >
+      <span
+        className="block text-sm font-light text-center opacity-70 tracking-[0.2em] transition-opacity duration-300 group-hover:opacity-100"
+        style={{ color }}
       >
-        <span className="block" style={{ animation: "arrow-float 2s ease-in-out infinite", willChange: "transform" }}>
-          <CustomArrowDown
-            size={44}
-            style={{
-              color,
-              filter: `drop-shadow(0 3px 8px ${shadowColor})`,
-            }}
-          />
-        </span>
-
-        <span
-          className="block text-l font-normal mt-3 text-center opacity-70 font-light tracking-widest"
-          style={{ color }}
-        >
-          {label}
-        </span>
-      </motion.button>
-    </>
+        {label}
+      </span>
+      <CustomArrowDown
+        size={28}
+        style={{ color }}
+        className="mt-1 transition-transform duration-300 ease-out group-hover:translate-y-1"
+      />
+    </motion.button>
   );
 };
 

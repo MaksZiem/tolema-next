@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title:
       "Jak przebiega wycena nieruchomości – proces krok po kroku | TOLEMA",
     description:
-      "9 etapów wyceny nieruchomości — od zlecenia po operat szacunkowy. Sprawdź, jak pracuje rzeczoznawca majątkowy.",
+      "9 etapów wyceny nieruchomości - od zlecenia po operat szacunkowy. Sprawdź, jak pracuje rzeczoznawca majątkowy.",
     type: "website",
     locale: "pl_PL",
     url: `${SITE_URL}/process`,

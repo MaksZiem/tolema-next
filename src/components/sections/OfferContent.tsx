@@ -17,7 +17,7 @@ const services = [
     title: "Wycena",
     titleStrong: "nieruchomości",
     description:
-      "Sporządzamy operaty szacunkowe dla wszystkich rodzajów nieruchomości — gruntów, budynków, lokali i ograniczonych praw rzeczowych. Wyceny realizujemy zgodnie z obowiązującymi przepisami prawa i standardami zawodowymi rzeczoznawców majątkowych.",
+      "Sporządzamy operaty szacunkowe dla wszystkich rodzajów nieruchomości - gruntów, budynków, lokali i ograniczonych praw rzeczowych. Wyceny realizujemy zgodnie z obowiązującymi przepisami prawa i standardami zawodowymi rzeczoznawców majątkowych.",
     useCases: [
       "Sprzedaż, zakup i zamiana nieruchomości",
       "Zabezpieczenie wierzytelności bankowych",
@@ -228,38 +228,12 @@ const services = [
   },
 ];
 
-// ── Tick marks — brand element ────────────────────────────────────────
-
-const ticks = Array.from({ length: 11 });
-
-function TickMarks({ light }: { light: boolean }) {
-  return (
-    <div className="flex shrink-0 flex-col justify-between py-1 h-24">
-      {ticks.map((_, i) => (
-        <motion.span
-          key={i}
-          className={`h-px ${
-            i % 5 === 0
-              ? "w-5 bg-[#D4B876]"
-              : `w-2.5 ${light ? "bg-black/25" : "bg-white/30"}`
-          }`}
-          initial={{ scaleX: 0, originX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 + i * 0.04 }}
-          viewport={{ once: true }}
-        />
-      ))}
-    </div>
-  );
-}
-
 // ── ServiceSection ────────────────────────────────────────────────────
 
 function ServiceSection({
   id,
   dark,
   reverse,
-  eyebrow,
   title,
   titleStrong,
   description,
@@ -269,71 +243,36 @@ function ServiceSection({
   id: string;
   dark: boolean;
   reverse?: boolean;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   titleStrong: string;
   description: string;
   useCases: string[];
   tags: string[];
 }) {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // Parallax: background gradient drifts slower than scroll
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
-
   const [tagsExpanded, setTagsExpanded] = useState(false);
   const TAGS_MOBILE_LIMIT = 8;
   const hiddenTagsCount = Math.max(0, tags.length - TAGS_MOBILE_LIMIT);
 
   const tagClass = dark
-    ? "border-white/20 text-white/70 hover:border-[#D4B876] hover:text-white"
-    : "border-black/15 text-black/65 hover:border-[#D4B876] hover:text-black";
+    ? "border-white/15 text-white/75"
+    : "border-black/15 text-black/70";
 
   const borderRule = dark ? "border-white/10" : "border-black/10";
   const dir = reverse ? -1 : 1;
 
   return (
     <section
-      ref={ref}
       id={id}
       data-navbar={dark ? "light" : "dark"}
       className={`relative overflow-hidden py-32 px-8 md:px-16 lg:px-24 ${
         dark ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
-      {/* Parallax background accent */}
-      <motion.div
-        style={{ y: bgY }}
-        aria-hidden
-        className={`absolute inset-0 pointer-events-none ${
-          dark
-            ? "bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,_rgba(212,184,118,0.06)_0%,_transparent_100%)]"
-            : "bg-[radial-gradient(ellipse_60%_50%_at_20%_50%,_rgba(212,184,118,0.08)_0%,_transparent_100%)]"
-        }`}
-      />
-
       <div className="relative z-10 mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
         {/* ── Description ───────────────────────────────────── */}
         <div className={`flex flex-col ${reverse ? "lg:order-2" : "lg:order-1"}`}>
-          {/* Eyebrow */}
-          <motion.div
-            className="flex items-center gap-5 mb-6"
-            initial={{ opacity: 0, x: -20 * dir }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="h-px w-12 bg-[#D4B876] shrink-0" />
-            <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
-              {eyebrow}
-            </span>
-          </motion.div>
-
           {/* Title */}
           <motion.h2
             className="text-4xl max-md:text-[clamp(1.5rem,9.5vw,2.25rem)] max-md:text-balance md:text-5xl lg:text-6xl font-thin leading-[1.05] tracking-tight"
@@ -346,15 +285,13 @@ function ServiceSection({
             <span className="font-semibold">{titleStrong}</span>
           </motion.h2>
 
-          {/* Tick marks + description */}
           <motion.div
-            className="mt-10 flex gap-6"
+            className="mt-10"
             initial={{ opacity: 0, x: -20 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
             viewport={{ once: true }}
           >
-            <TickMarks light={!dark} />
             <p
               className={`text-lg font-light leading-relaxed ${
                 dark ? "text-white/65" : "text-black/65"
@@ -375,17 +312,15 @@ function ServiceSection({
             {useCases.map((uc, i) => (
               <motion.li
                 key={uc}
-                className={`flex items-start gap-4 text-sm font-light ${
-                  dark ? "text-white/60" : "text-black/60"
+                className={`flex items-start gap-4 text-base font-light ${
+                  dark ? "text-white/70" : "text-black/70"
                 }`}
                 initial={{ opacity: 0, x: -10 * dir }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.07 }}
                 viewport={{ once: true }}
               >
-                <span className="text-[#D4B876] shrink-0 mt-0.5 text-xs font-medium tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                <span aria-hidden className="mt-2.5 h-px w-4 shrink-0 bg-[#D4B876]" />
                 <span>{uc}</span>
               </motion.li>
             ))}
@@ -395,49 +330,33 @@ function ServiceSection({
         {/* ── Tags ─────────────────────────────────────────── */}
         <div className={`flex flex-col ${reverse ? "lg:order-1" : "lg:order-2"}`}>
           {/* Tags label */}
-          <motion.div
-            className={`flex items-center gap-5 mb-6 border-b pb-6 ${borderRule}`}
-            initial={{ opacity: 0, x: 20 * dir }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <span
-              className={`text-xs font-medium uppercase tracking-[0.35em] ${
-                dark ? "text-white/35" : "text-black/35"
-              }`}
-            >
-              Zakres usług
-            </span>
-          </motion.div>
+          <h3 className="mb-6 text-2xl font-thin tracking-tight lg:mt-3">
+            Zakres usług
+          </h3>
 
           {/* Tag pills */}
-          <motion.div
-            className="flex flex-wrap gap-2"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+          <motion.ul
+            className="sm:columns-2 sm:gap-x-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
             viewport={{ once: true }}
           >
             {tags.map((tag, i) => (
-              <motion.span
+              <li
                 key={tag}
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.22, delay: 0.08 + i * 0.02 }}
-                viewport={{ once: true }}
-                className={`cursor-default rounded-full border px-4 py-2 text-sm transition-colors duration-300 ${tagClass} ${
+                className={`break-inside-avoid border-t py-2.5 text-sm font-light ${tagClass} ${
                   i >= TAGS_MOBILE_LIMIT && !tagsExpanded
-                    ? "hidden md:inline-flex"
+                    ? "hidden md:block"
                     : ""
                 }`}
               >
                 {tag}
-              </motion.span>
+              </li>
             ))}
-          </motion.div>
+          </motion.ul>
 
-          {/* Mobile-only show more/less toggle — tags stay in the DOM for SEO, this only affects visibility below md */}
+          {/* Mobile-only show more/less toggle - tags stay in the DOM for SEO, this only affects visibility below md */}
           {hiddenTagsCount > 0 && (
             <button
               type="button"
@@ -485,13 +404,13 @@ export default function OfferContent() {
 
   return (
     <main>
-      {/* ── Hero — bez wideo, split: tekst lewej / miasto prawej ─ */}
+      {/* ── Hero - bez wideo, split: tekst lewej / miasto prawej ─ */}
       <section
         ref={heroRef}
         className="relative h-screen w-full overflow-hidden bg-black text-white max-md:flex max-md:h-auto max-md:min-h-[100svh] max-md:flex-col"
         data-navbar="light"
       >
-        {/* City image — right 60%, parallax */}
+        {/* City image - right 60%, parallax */}
         <motion.div
           style={{ y: cityY }}
           className="absolute inset-0 pointer-events-none"
@@ -521,18 +440,9 @@ export default function OfferContent() {
           className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50"
         />
 
-        {/* Text — left-aligned, different od strony głównej */}
+        {/* Text - left-aligned, different od strony głównej */}
         <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-20 max-w-3xl max-md:h-auto max-md:flex-1 max-md:pt-24 max-md:pb-10">
-          {/* <motion.span
-            className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876] mb-8"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3 }}
-          >
-            Rzeczoznawca majątkowy
-          </motion.span> */}
-
-          {/* Page h1 — display:contents keeps each animated line as its own
+          {/* Page h1 - display:contents keeps each animated line as its own
               flex item so the visual layout is unchanged. */}
           <h1 className="contents">
             {/* Line 1 */}
@@ -594,7 +504,7 @@ export default function OfferContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
           >
-            Nieruchomości, maszyny, przedsiębiorstwa, środki techniczne —
+            Nieruchomości, maszyny, przedsiębiorstwa, środki techniczne -
             każdy składnik majątku wyceniamy z precyzją.
           </motion.p>
         </div>
@@ -606,28 +516,9 @@ export default function OfferContent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
         >
-          {/* Info strip — ukryty poniżej 900px, za dużo treści jak na mobile */}
-          <div className="hidden justify-center border-t border-b border-white/20 bg-black/30 backdrop-blur-sm mb-20 min-[900px]:flex">
-            <div className="flex justify-between p-6 w-[90%]">
-              <div className="w-[320px] text-sm font-thin text-white/60 flex items-center">
-                Nieruchomości · Maszyny · Biznes · Kosztorysy
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <div className="text-xs text-white/40 text-center">kategorii wycen</div>
-                <div className="text-2xl text-center font-extralight">[ 6 ]</div>
-              </div>
-              <div className="flex items-center justify-center font-thin text-lg text-white/70">
-                [ 100+ ] usług
-              </div>
-              <div className="text-2xl flex items-center justify-center text-white/80">
-                po prostu TOLEMA.
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation strip — spójny breakpoint z paskiem info powyżej */}
+          {/* Navigation strip - spójny breakpoint z paskiem info powyżej */}
           <nav
-            className="border-t border-white/10 bg-black/50 backdrop-blur-sm hidden min-[900px]:flex"
+            className="border-t border-white/15 bg-black hidden min-[900px]:flex"
             aria-label="Skocz do sekcji"
           >
             {services.map(({ id, eyebrow }) => (
@@ -639,7 +530,7 @@ export default function OfferContent() {
                   const top = el.getBoundingClientRect().top + window.scrollY - 70;
                   window.scrollTo({ top, behavior: "smooth" });
                 }}
-                className="flex-1 py-3.5 text-center text-xs font-light uppercase tracking-[0.28em] text-white/40 hover:text-[#D4B876] transition-colors duration-300 border-r border-white/10 last:border-r-0 cursor-pointer"
+                className="flex-1 py-3.5 text-center text-xs font-light uppercase tracking-[0.28em] text-white/60 hover:text-[#D4B876] transition-colors duration-300 border-r border-white/10 last:border-r-0 cursor-pointer"
               >
                 {eyebrow}
               </button>
@@ -647,7 +538,7 @@ export default function OfferContent() {
           </nav>
         </motion.div>
 
-        {/* Mobile-only scroll arrow — na desktopie zastępuje ją pasek nawigacji powyżej. relative z-20, żeby wystawać ponad pełnowysokościowy blok tekstu (z-10) i łapać kliknięcia */}
+        {/* Mobile-only scroll arrow - na desktopie zastępuje ją pasek nawigacji powyżej. relative z-20, żeby wystawać ponad pełnowysokościowy blok tekstu (z-10) i łapać kliknięcia */}
         <div className="relative z-20 min-[900px]:hidden max-md:flex max-md:justify-center max-md:pb-8">
           <SectionArrow inline="mobile" label="Oferta" targetSection="nieruchomosci" />
         </div>
@@ -663,24 +554,9 @@ export default function OfferContent() {
         className="relative overflow-hidden bg-[#D4B876] py-28 px-8"
         data-navbar="dark"
       >
-        <div
-          aria-hidden
-          className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-white/20 blur-3xl pointer-events-none"
-        />
-
         <div className="relative z-10 mx-auto max-w-[860px] text-center">
-          <motion.span
-            className="text-sm font-medium uppercase tracking-[0.38em] text-black/55"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            Skontaktuj się
-          </motion.span>
-
           <motion.h2
-            className="mt-5 text-5xl font-thin text-black tracking-tight"
+            className="text-5xl font-thin text-black tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}

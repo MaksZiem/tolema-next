@@ -6,10 +6,9 @@ export default function TechnicalMeasures() {
   return (
     <OfferSection
       theme="gold"
-      eyebrow="Środki techniczne"
       titleLead="Wycena"
       titleStrong="środków technicznych"
-      lead="Maszyny, pojazdy i linie technologiczne wycenione rzetelnie — od pojedynczego urządzenia po cały park maszynowy."
+      lead="Maszyny, pojazdy i linie technologiczne wycenione rzetelnie - od pojedynczego urządzenia po cały park maszynowy."
       tags={[
         "Maszyny budowlane",
         "Pojazdy specjalistyczne",

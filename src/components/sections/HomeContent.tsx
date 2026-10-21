@@ -88,24 +88,12 @@ export default function HomeContent() {
           </motion.h2>
 
           <motion.div
-            className="mt-7 ml-1 flex gap-5"
+            className="mt-7"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             viewport={{ once: true }}
           >
-            <div className="flex shrink-0 flex-col justify-between py-1">
-              {Array.from({ length: 11 }).map((_, i) => (
-                <motion.span
-                  key={i}
-                  className={`h-px ${i % 5 === 0 ? "w-5 bg-[#D4B876]" : "w-2.5 bg-black/25"}`}
-                  initial={{ scaleX: 0, originX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.4, delay: 0.2 + i * 0.04 }}
-                  viewport={{ once: true }}
-                />
-              ))}
-            </div>
             <p className="text-base font-light  text-lg leading-relaxed text-black/70">
               Należę do Warszawskiego Stowarzyszenia Rzeczoznawców Majątkowych
               zrzeszonego w Polskiej Federacji Stowarzyszeń Rzeczoznawców

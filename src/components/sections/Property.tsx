@@ -6,10 +6,9 @@ export default function Property() {
   return (
     <OfferSection
       theme="dark"
-      eyebrow="Nieruchomości"
       titleLead="Wycena"
       titleStrong="nieruchomości"
-      lead="Operaty szacunkowe dla mieszkań, gruntów i obiektów komercyjnych — przygotowane tak, by obroniły się przed bankiem, sądem i urzędem."
+      lead="Operaty szacunkowe dla mieszkań, gruntów i obiektów komercyjnych - przygotowane tak, by obroniły się przed bankiem, sądem i urzędem."
       tags={[
         "Mieszkania",
         "Grunty",

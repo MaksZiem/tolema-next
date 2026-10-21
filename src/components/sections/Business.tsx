@@ -6,10 +6,9 @@ export default function Business() {
   return (
     <OfferSection
       theme="light"
-      eyebrow="Biznes"
       titleLead="Wycena"
       titleStrong="biznesu"
-      lead="Wartość spółki, udziałów i marki określona na liczbach, nie na przeczuciach — pod realne decyzje, inwestycje i rozliczenia."
+      lead="Wartość spółki, udziałów i marki określona na liczbach, nie na przeczuciach - pod realne decyzje, inwestycje i rozliczenia."
       tags={[
         "Spółki",
         "Akcje i udziały",

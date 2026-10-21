@@ -8,16 +8,6 @@ import Footer from "@/components/layout/Footer";
 import { sendContactMessage, type ContactFormState } from "@/app/contact/actions";
 import { faqs } from "@/data/faq";
 
-// ── Icons (spójne z Footer) ──────────────────────────────────────────
-
-const iconClass = "w-5 h-5 shrink-0";
-
-const ClockIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={iconClass} aria-hidden="true">
-    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-  </svg>
-);
-
 const topics = [
   "Wycena nieruchomości",
   "Wycena maszyn i urządzeń",
@@ -63,7 +53,7 @@ function ContactForm() {
 
   return (
     <form ref={formRef} action={formAction} className="flex flex-col gap-6">
-      {/* Honeypot — ukryte przed użytkownikiem, wyłapuje boty */}
+      {/* Honeypot - ukryte przed użytkownikiem, wyłapuje boty */}
       <input
         type="text"
         name="company"
@@ -193,19 +183,18 @@ function FaqItem({
         aria-expanded={open}
         className="group flex w-full items-start gap-4 py-6 text-left cursor-pointer"
       >
-        <span className="mt-0.5 shrink-0 text-xs font-medium tabular-nums text-[#D4B876] w-6">
-          {String(index + 1).padStart(2, "0")}
-        </span>
         <span className="flex-1 text-lg font-light text-black transition-colors duration-300 group-hover:text-black/70 md:text-xl">
           {question}
         </span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="mt-1 shrink-0 text-2xl font-thin text-[#D4B876]"
+          className="mt-1.5 shrink-0 text-[#D4B876]"
           aria-hidden="true"
         >
-          +
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round">
+            <path d="M12 4v16M4 12h16" />
+          </svg>
         </motion.span>
       </button>
 
@@ -215,7 +204,7 @@ function FaqItem({
         transition={{ duration: 0.35, ease: "easeOut" }}
         className="overflow-hidden"
       >
-        <p className="max-w-2xl pb-6 pl-10 text-base font-light leading-relaxed text-black/60">
+        <p className="max-w-2xl pb-6 text-base font-light leading-relaxed text-black/60">
           {answer}
         </p>
       </motion.div>
@@ -236,18 +225,6 @@ export default function ContactContent() {
         data-navbar="dark"
       >
         <div className="mx-auto max-w-[1000px]">
-          <motion.div
-            className="mb-6 flex items-center gap-5"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="h-px w-12 shrink-0 bg-[#D4B876]" />
-            <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
-              Kontakt
-            </span>
-          </motion.div>
-
           <motion.h1
             className="max-w-2xl text-4xl font-thin leading-[1.05] tracking-tight md:text-5xl"
             initial={{ opacity: 0, y: 16 }}
@@ -263,7 +240,7 @@ export default function ContactContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            Opisz w kilku zdaniach swoją sprawę — odpowiem z propozycją
+            Opisz w kilku zdaniach swoją sprawę - odpowiem z propozycją
             zakresu prac i kosztu wyceny. Można też zadzwonić lub napisać
             bezpośrednio na e-mail.
           </motion.p>
@@ -290,21 +267,19 @@ export default function ContactContent() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="rounded-2xl bg-[#e8e8e8] px-8 py-10 text-black"
+            className="border-t border-black/15 pt-8 text-black lg:border-t-0 lg:border-l lg:pl-10 lg:pt-1"
           >
-            <span className="text-sm font-medium uppercase tracking-[0.35em] text-black/50">
-              Jak to wygląda
-            </span>
+            <h2 className="text-2xl font-thin tracking-tight">Jak to wygląda</h2>
 
             <ol className="mt-8 space-y-6">
               {contactSteps.map((step, i) => (
                 <li key={step.title} className="flex gap-4">
-                  <span className="mt-0.5 shrink-0 text-xs font-medium tabular-nums text-[#D4B876] w-5">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="shrink-0 text-base font-light tabular-nums text-[#8a7233] w-4">
+                    {i + 1}.
                   </span>
                   <span className="flex flex-col">
                     <span className="text-base font-normal text-black">{step.title}</span>
-                    <span className="text-sm font-light leading-relaxed text-black/55">
+                    <span className="text-sm font-light leading-relaxed text-black/65">
                       {step.text}
                     </span>
                   </span>
@@ -312,20 +287,13 @@ export default function ContactContent() {
               ))}
             </ol>
 
-            <div className="mt-10 flex items-center gap-4 border-t border-black/10 pt-8">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/15 text-black/60">
-                <ClockIcon />
-              </span>
-              <span className="flex flex-col">
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-black/60">
-                  Godziny pracy
-                </span>
-                <span className="text-base font-light text-black">Pon–Pt, 8:00–16:00</span>
-              </span>
-            </div>
+            <dl className="mt-10 border-t border-black/10 pt-8">
+              <dt className="text-sm font-light text-black/60">Godziny pracy</dt>
+              <dd className="mt-1 text-lg font-light tabular-nums text-black">Pon–Pt, 8:00–16:00</dd>
+            </dl>
 
-            <p className="mt-6 text-sm font-light leading-relaxed text-black/50">
-              Pełne dane kontaktowe — e-mail, telefon i adres — znajdziesz w
+            <p className="mt-6 text-sm font-light leading-relaxed text-black/60">
+              Pełne dane kontaktowe - e-mail, telefon i adres - znajdziesz w
               stopce poniżej.
             </p>
           </motion.div>
@@ -338,19 +306,6 @@ export default function ContactContent() {
         data-navbar="dark"
       >
         <div className="mx-auto max-w-[860px]">
-          <motion.div
-            className="mb-6 flex items-center gap-5"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="h-px w-12 shrink-0 bg-[#D4B876]" />
-            <span className="text-sm font-medium uppercase tracking-[0.4em] text-[#D4B876]">
-              FAQ
-            </span>
-          </motion.div>
-
           <motion.h2
             className="max-w-xl text-3xl font-thin tracking-tight md:text-4xl"
             initial={{ opacity: 0, y: 16 }}

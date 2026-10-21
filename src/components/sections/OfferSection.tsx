@@ -9,7 +9,6 @@ type Theme = "dark" | "gold" | "light";
 
 interface OfferSectionProps {
   theme: Theme;
-  eyebrow: string;
   titleLead: string;
   titleStrong: string;
   lead: string;
@@ -26,14 +25,11 @@ const themes: Record<
     bg: string;
     text: string;
     sub: string;
-    eyebrow: string;
     rule: string;
     tick: string;
     tickAccent: string;
     tag: string;
-    glow: string;
-    ring: string;
-    meta: string;
+    frame: string;
     navbar: "light" | "dark";
   }
 > = {
@@ -41,52 +37,42 @@ const themes: Record<
     bg: "bg-black",
     text: "text-white",
     sub: "text-white/60",
-    eyebrow: "text-[#D4B876]",
     rule: "bg-white/15",
     tick: "bg-white/30",
     tickAccent: "bg-[#D4B876]",
-    tag: "border-white/20 text-white/75 hover:border-[#D4B876] hover:text-white",
-    glow: "bg-[#D4B876]/25",
-    ring: "ring-white/10",
-    meta: "text-white/50",
+    tag: "border-white/15 text-white/75",
+    frame: "border-black",
     navbar: "light" as const,
   },
   gold: {
     bg: "bg-[#D4B876]",
     text: "text-black",
     sub: "text-black/70",
-    eyebrow: "text-black/80",
     rule: "bg-black/20",
     tick: "bg-black/30",
     tickAccent: "bg-white",
-    tag: "border-black/25 text-black/75 hover:border-black hover:text-black",
-    glow: "bg-white/40",
-    ring: "ring-black/10",
-    meta: "text-black/55",
+    tag: "border-black/20 text-black/75",
+    frame: "border-[#D4B876]",
     navbar: "dark" as const,
   },
   light: {
     bg: "bg-white",
     text: "text-black",
     sub: "text-black/60",
-    eyebrow: "text-[#B8964E]",
     rule: "bg-black/15",
     tick: "bg-black/25",
     tickAccent: "bg-[#D4B876]",
-    tag: "border-black/15 text-black/70 hover:border-[#D4B876] hover:text-black",
-    glow: "bg-[#D4B876]/30",
-    ring: "ring-black/5",
-    meta: "text-black/50",
+    tag: "border-black/15 text-black/70",
+    frame: "border-white",
     navbar: "dark" as const,
   },
 };
 
-// Podziałka z kreskami — sygnaturowy element nawiązujący do mierzenia/szacowania.
+// Podziałka z kreskami - sygnaturowy element nawiązujący do mierzenia/szacowania.
 const ticks = Array.from({ length: 11 });
 
 export default function OfferSection({
   theme,
-  eyebrow,
   titleLead,
   titleStrong,
   lead,
@@ -118,18 +104,12 @@ export default function OfferSection({
       <div
         className={`mx-auto flex h-full max-w-[1400px] flex-col items-center justify-center gap-8 px-6 min-[1600px]:flex-row min-[1600px]:justify-normal min-[1600px]:gap-48 min-[1600px]:px-12 ${reverse ? "min-[1600px]:flex-row-reverse" : ""}`}
       >
-        {/* ── Media (tylko desktop — na mobile bez filmików) ───── */}
+        {/* ── Media (tylko desktop - na mobile bez filmików) ───── */}
         {isDesktop && (
           <div className="relative hidden h-[64vh] w-1/2 items-center justify-center min-[1600px]:flex">
-            {/* Ambient glow */}
-            <div
-              aria-hidden
-              className={`absolute h-[26rem] w-[26rem] rounded-full blur-3xl opacity-60 ${t.glow}`}
-            />
-
             {/* Kadr główny */}
             <motion.figure
-              className={`group relative z-10 h-[28rem] w-[38rem] max-w-full overflow-hidden rounded-3xl shadow-2xl ring-1 ${t.ring}`}
+              className={`group relative z-10 h-[28rem] w-[38rem] max-w-full overflow-hidden`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -153,16 +133,11 @@ export default function OfferSection({
                   <source src={videoPrimary} type="video/mp4" />
                 </video>
               )}
-              <span
-                className={`pointer-events-none absolute left-4 top-4 rounded-full bg-black/40 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm`}
-              >
-                {eyebrow}
-              </span>
             </motion.figure>
 
-            {/* Kadr drugi — przesunięty bardziej w prawo */}
+            {/* Kadr drugi - przesunięty bardziej w prawo */}
             <motion.figure
-              className={`absolute bottom-2 -right-20 z-20 h-[18rem] w-[24rem] max-w-[60%] overflow-hidden rounded-2xl shadow-2xl ring-1 ${t.ring}`}
+              className={`absolute bottom-2 -right-20 z-20 h-[18rem] w-[24rem] max-w-[60%] overflow-hidden border-8 ${t.frame}`}
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -192,18 +167,8 @@ export default function OfferSection({
 
         {/* ── Treść ───────────────────────────────────────────── */}
         <div className="flex w-full flex-col min-[1600px]:w-1/2">
-          <motion.span
-            className={`text-lg font-medium uppercase tracking-[0.32em] ${t.eyebrow}`}
-            initial={{ opacity: 0, x: 40 * dir }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            {eyebrow}
-          </motion.span>
-
           <motion.h2
-            className="mt-5 text-4xl min-[1600px]:text-6xl font-thin leading-[1.05] tracking-tight"
+            className="text-4xl min-[1600px]:text-6xl font-thin leading-[1.05] tracking-tight"
             initial={{ opacity: 0, x: 40 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
@@ -239,7 +204,7 @@ export default function OfferSection({
 
           {/* Tagi zakresu */}
           <motion.ul
-            className="mt-8 flex flex-wrap gap-2.5"
+            className="mt-10 grid max-w-[34rem] grid-cols-2 gap-x-8"
             initial={{ opacity: 0, x: 40 * dir }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
@@ -248,7 +213,7 @@ export default function OfferSection({
             {tags.map((tag) => (
               <li
                 key={tag}
-                className={`cursor-default rounded-full border px-4 py-1.5 text-sm transition-colors duration-300 ${t.tag}`}
+                className={`border-t py-2.5 text-sm font-light ${t.tag}`}
               >
                 {tag}
               </li>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { GA_ID } from "@/lib/site";
 
-// Decyzja użytkownika jest pamiętana 12 miesięcy (localStorage — niezbędne, nie wymaga zgody).
+// Decyzja użytkownika jest pamiętana 12 miesięcy (localStorage - niezbędne, nie wymaga zgody).
 const STORAGE_KEY = "tolema-consent";
 const MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 export const OPEN_CONSENT_EVENT = "tolema:open-consent";
@@ -45,7 +45,7 @@ function saveDecision(value: Decision) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ value, ts: Date.now() }));
   } catch {
-    // brak dostępu do localStorage — baner pojawi się ponownie przy kolejnej wizycie
+    // brak dostępu do localStorage - baner pojawi się ponownie przy kolejnej wizycie
   }
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
@@ -65,7 +65,7 @@ function clearGaCookies() {
 }
 
 export default function CookieConsent() {
-  // null na serwerze — baner renderuje się dopiero w przeglądarce, bez błędu hydracji.
+  // null na serwerze - baner renderuje się dopiero w przeglądarce, bez błędu hydracji.
   const raw = useSyncExternalStore(subscribe, readRaw, () => null);
   const decision = raw === null ? null : parseDecision(raw);
   const [reopened, setReopened] = useState(false);
@@ -77,7 +77,7 @@ export default function CookieConsent() {
     return () => window.removeEventListener(OPEN_CONSENT_EVENT, reopen);
   }, []);
 
-  // Bez identyfikatora GA strona nie używa cookies wymagających zgody — baner zbędny.
+  // Bez identyfikatora GA strona nie używa cookies wymagających zgody - baner zbędny.
   if (!GA_ID) return null;
 
   const choose = (value: Decision) => {
@@ -85,7 +85,7 @@ export default function CookieConsent() {
     saveDecision(value);
     setReopened(false);
     if (value === "denied" && previous === "granted") {
-      // Skrypt GA jest już załadowany — usuwamy cookies i przeładowujemy stronę bez niego.
+      // Skrypt GA jest już załadowany - usuwamy cookies i przeładowujemy stronę bez niego.
       clearGaCookies();
       location.reload();
     }

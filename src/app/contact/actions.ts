@@ -25,7 +25,7 @@ export async function sendContactMessage(
   _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  // Honeypot — pole ukryte przed użytkownikiem, wypełniane tylko przez boty.
+  // Honeypot - pole ukryte przed użytkownikiem, wypełniane tylko przez boty.
   if (formData.get("company")) {
     return { status: "success", message: "Wiadomość została wysłana." };
   }
@@ -50,7 +50,7 @@ export async function sendContactMessage(
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn(
-      "RESEND_API_KEY nie jest ustawiony — formularz kontaktowy nie może wysłać wiadomości."
+      "RESEND_API_KEY nie jest ustawiony - formularz kontaktowy nie może wysłać wiadomości."
     );
     return {
       status: "error",
@@ -66,7 +66,7 @@ export async function sendContactMessage(
       to: TO_EMAIL,
       replyTo: email,
       subject: topic
-        ? `[TOLEMA] Nowa wiadomość — ${topic}`
+        ? `[TOLEMA] Nowa wiadomość - ${topic}`
         : "[TOLEMA] Nowa wiadomość ze strony kontaktowej",
       text: [
         `Imię i nazwisko: ${name}`,
@@ -99,7 +99,7 @@ export async function sendContactMessage(
 
     return {
       status: "success",
-      message: "Dziękujemy! Wiadomość została wysłana — odezwiemy się wkrótce.",
+      message: "Dziękujemy! Wiadomość została wysłana - odezwiemy się wkrótce.",
     };
   } catch (err) {
     console.error("Contact form send failed:", err);
