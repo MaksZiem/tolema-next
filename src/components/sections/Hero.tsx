@@ -51,7 +51,7 @@ export default function Hero({
             pewność, bezpieczeństwo i&nbsp;przejrzyste zasady współpracy.
           </p>
           <div className="flex flex-col justify-center">
-            <div className="text-sm text-center sm:text-base">na rynku od</div>
+            <div className="whitespace-nowrap text-sm text-center max-[359px]:text-xs sm:text-base">na rynku od</div>
             <div className="whitespace-nowrap text-3xl text-center font-extralight sm:text-4xl">
               [ <RandomNumberAnimation value={2017} /> ]
             </div>
@@ -63,7 +63,7 @@ export default function Hero({
             <div className="whitespace-nowrap text-3xl text-center font-extralight sm:text-4xl">
               [ +<RandomNumberAnimation value={230} /> ]
             </div>
-            <div className="text-sm text-center sm:text-base min-[1600px]:whitespace-nowrap">ukończonych wycen</div>
+            <div className="order-first whitespace-nowrap text-sm text-center max-[359px]:text-xs sm:text-base md:order-none">ukończonych wycen</div>
           </div>
           <div className="order-last col-span-2 flex flex-col justify-center text-balance text-[clamp(1.5rem,8.5vw,2.25rem)] [@media(max-height:600px)]:text-2xl md:order-none md:col-span-1 md:text-2xl lg:text-3xl xl:text-4xl min-[1600px]:whitespace-nowrap min-[1600px]:text-[clamp(1.75rem,1.9vw,2.25rem)]">
             po prostu TOLEMA.
