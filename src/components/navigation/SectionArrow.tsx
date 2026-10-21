@@ -30,10 +30,12 @@ const SectionArrow = ({
   label = "SCROLL",
   targetSection,
   color = "white",
+  inline = false,
 }: {
   label?: string;
   targetSection?: string;
   color?: string;
+  inline?: boolean;
 }) => {
   const scrollToSection = () => {
     if (targetSection) {
@@ -59,14 +61,18 @@ const SectionArrow = ({
           50% { transform: translateY(8px); }
         }
       `}</style>
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer flex flex-col items-center"
+      <motion.button
+        type="button"
+        aria-label={`Przewiń do sekcji: ${label}`}
+        className={`${
+          inline ? "relative mx-auto" : "absolute bottom-8 left-1/2 -translate-x-1/2"
+        } cursor-pointer flex flex-col items-center`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         onClick={scrollToSection}
       >
-        <div style={{ animation: "arrow-float 2s ease-in-out infinite", willChange: "transform" }}>
+        <span className="block" style={{ animation: "arrow-float 2s ease-in-out infinite", willChange: "transform" }}>
           <CustomArrowDown
             size={44}
             style={{
@@ -74,15 +80,15 @@ const SectionArrow = ({
               filter: `drop-shadow(0 3px 8px ${shadowColor})`,
             }}
           />
-        </div>
+        </span>
 
-        <p
-          className="text-l font-normal mt-3 text-center opacity-70 font-light tracking-widest"
+        <span
+          className="block text-l font-normal mt-3 text-center opacity-70 font-light tracking-widest"
           style={{ color }}
         >
           {label}
-        </p>
-      </motion.div>
+        </span>
+      </motion.button>
     </>
   );
 };
