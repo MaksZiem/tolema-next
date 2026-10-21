@@ -5,6 +5,7 @@ import { useActionState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
+import ActionButton from "@/components/ui/ActionButton";
 import { sendContactMessage, type ContactFormState } from "@/app/contact/actions";
 import { faqs } from "@/data/faq";
 
@@ -117,18 +118,9 @@ function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-        <button
-          type="submit"
-          disabled={pending}
-          className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-black/40 px-8 py-4 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 self-start"
-        >
-          <span className="absolute inset-0 -translate-x-full bg-black transition-transform duration-500 ease-out group-hover:translate-x-0" />
-          <span className="relative z-10 flex items-center gap-3 text-black transition-colors duration-300 group-hover:text-white">
-            <span className="text-lg font-light uppercase tracking-[0.18em]">
-              {pending ? "Wysyłanie…" : "Wyślij wiadomość"}
-            </span>
-          </span>
-        </button>
+        <ActionButton type="submit" variant="reverse" disabled={pending} arrow={false} className="self-start">
+          {pending ? "Wysyłanie…" : "Wyślij wiadomość"}
+        </ActionButton>
 
         {state.status !== "idle" && (
           <p

@@ -113,7 +113,7 @@ gtag('config', '${GA_ID}');`}
           role="dialog"
           aria-labelledby="cookie-title"
           aria-describedby="cookie-desc"
-          className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-[640px] rounded-2xl border border-white/10 bg-[#0d0d0d] p-6 text-white shadow-2xl md:p-8"
+          className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-[640px] border border-white/20 bg-[#0d0d0d] p-6 text-white md:p-8"
         >
           <h2 id="cookie-title" className="text-lg font-semibold">
             Pliki cookies
@@ -131,14 +131,14 @@ gtag('config', '${GA_ID}');`}
             <button
               type="button"
               onClick={() => choose("denied")}
-              className="flex-1 cursor-pointer rounded-full border border-white/40 px-6 py-3 text-sm font-light uppercase tracking-[0.18em] transition-colors hover:bg-white hover:text-black"
+              className="flex-1 cursor-pointer border border-white/40 px-6 py-3 text-sm font-light uppercase tracking-[0.18em] transition-colors hover:bg-white hover:text-black"
             >
               Odrzucam
             </button>
             <button
               type="button"
               onClick={() => choose("granted")}
-              className="flex-1 cursor-pointer rounded-full border border-white/40 px-6 py-3 text-sm font-light uppercase tracking-[0.18em] transition-colors hover:bg-white hover:text-black"
+              className="flex-1 cursor-pointer border border-white/40 px-6 py-3 text-sm font-light uppercase tracking-[0.18em] transition-colors hover:bg-white hover:text-black"
             >
               Akceptuję
             </button>

@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
 import Footer from "@/components/layout/Footer";
+import ActionButton from "@/components/ui/ActionButton";
 import { processSteps } from "@/data/processSteps";
 
 // ── Step item - number node lights up as it crosses the viewport centre ─
@@ -176,29 +176,9 @@ export default function ProcessContent() {
             transition={{ duration: 0.7, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact">
-              <button className="group relative mt-10 inline-flex items-center gap-3 overflow-hidden rounded-full border border-black/40 px-8 py-4 cursor-pointer">
-                <span className="absolute inset-0 -translate-x-full bg-black transition-transform duration-500 ease-out group-hover:translate-x-0" />
-                <span className="relative z-10 flex items-center gap-3 text-black transition-colors duration-300 group-hover:text-white">
-                  <span className="text-lg font-light uppercase tracking-[0.18em]">
-                    Kontakt
-                  </span>
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="transition-transform duration-300 ease-out group-hover:translate-x-1"
-                  >
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
-              </button>
-            </Link>
+            <ActionButton href="/contact" variant="reverse" className="mt-10">
+              Kontakt
+            </ActionButton>
           </motion.div>
         </div>
       </section>
