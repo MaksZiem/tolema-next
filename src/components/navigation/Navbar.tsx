@@ -177,14 +177,14 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.06 * i + 0.1 }}
-                    className="border-b border-white/10"
+                    className="border-b border-white/15"
                   >
                     <Link
                       href={href}
-                      className="group block py-4"
+                      className="group block py-5"
                     >
                       <span
-                        className={`text-3xl font-thin transition-colors duration-300 ${
+                        className={`text-4xl font-normal transition-colors duration-300 ${
                           isActive
                             ? "text-[#D4B876]"
                             : "text-white group-hover:text-[#D4B876]"
@@ -203,7 +203,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.35 }}
-            className="flex items-center justify-between px-8 py-8 text-sm font-light text-white/60"
+            className="flex items-center justify-between px-8 py-8 text-base font-normal text-white/80"
           >
             <span>TOLEMA wyceny</span>
             <a

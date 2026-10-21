@@ -335,32 +335,48 @@ function ServiceSection({
           </h3>
 
           {/* Tag pills */}
-          <motion.ul
-            className="sm:columns-2 sm:gap-x-10"
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             viewport={{ once: true }}
           >
-            {tags.map((tag, i) => (
-              <li
-                key={tag}
-                className={`break-inside-avoid border-t py-2.5 text-sm font-light ${tagClass} ${
-                  i >= TAGS_MOBILE_LIMIT && !tagsExpanded
-                    ? "hidden md:block"
-                    : ""
-                }`}
+            <ul className="md:grid md:grid-cols-2 md:gap-x-10">
+              {tags.slice(0, TAGS_MOBILE_LIMIT).map((tag) => (
+                <li key={tag} className={`border-t py-2.5 text-sm font-light ${tagClass}`}>
+                  {tag}
+                </li>
+              ))}
+            </ul>
+            {hiddenTagsCount > 0 && (
+              <motion.div
+                id={`${id}-zakres`}
+                initial={false}
+                animate={{
+                  height: tagsExpanded ? "auto" : 0,
+                  opacity: tagsExpanded ? 1 : 0,
+                }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden md:h-auto! md:opacity-100!"
               >
-                {tag}
-              </li>
-            ))}
-          </motion.ul>
+                <ul className="md:grid md:grid-cols-2 md:gap-x-10">
+                  {tags.slice(TAGS_MOBILE_LIMIT).map((tag) => (
+                    <li key={tag} className={`border-t py-2.5 text-sm font-light ${tagClass}`}>
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </motion.div>
 
           {/* Mobile-only show more/less toggle - tags stay in the DOM for SEO, this only affects visibility below md */}
           {hiddenTagsCount > 0 && (
             <button
               type="button"
               onClick={() => setTagsExpanded((v) => !v)}
+              aria-expanded={tagsExpanded}
+              aria-controls={`${id}-zakres`}
               className={`mt-5 flex items-center gap-2.5 self-start text-xs font-light uppercase tracking-[0.28em] transition-colors duration-300 md:hidden cursor-pointer ${
                 dark
                   ? "text-white/40 hover:text-[#D4B876]"
