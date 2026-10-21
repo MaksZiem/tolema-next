@@ -43,7 +43,7 @@ export default function Hero({
       )}
 
       <AnimatedSlogan variant="hero" />
-      <div className="mt-auto flex justify-center pt-8 [@media(max-height:700px)]:pt-4 min-[1600px]:pt-12">
+      <div className="flex justify-center pt-8 [@media(max-height:700px)]:pt-4 md:mt-auto min-[1600px]:pt-12">
         <div className="grid w-[90%] grid-cols-2 items-center gap-x-4 gap-y-3 [@media(max-height:700px)]:gap-y-2 border-t border-b border-white p-4 text-center md:grid-cols-4 md:gap-y-5 md:py-5 min-[1600px]:flex min-[1600px]:flex-row min-[1600px]:items-stretch min-[1600px]:justify-between min-[1600px]:gap-8 min-[1600px]:p-8 min-[1600px]:text-left">
           <p className="col-span-2 mx-auto max-w-[62ch] text-pretty text-sm font-thin sm:text-base md:col-span-4 [@media(max-height:660px)]:hidden min-[1600px]:mx-0 min-[1600px]:w-[clamp(280px,21vw,400px)] min-[1600px]:max-w-none min-[1600px]:shrink-0 min-[1600px]:text-sm min-[1800px]:text-base">
             Sprawy majątkowe i prawne wymagają spokoju, doświadczenia
@@ -70,7 +70,7 @@ export default function Hero({
           </div>
         </div>
       </div>
-      <div className="flex justify-center pt-5 pb-6 sm:pb-8 [@media(max-height:700px)]:pt-3 [@media(max-height:700px)]:pb-4 [@media(max-height:600px)]:pb-2">
+      <div className="mt-auto flex justify-center pt-5 pb-6 sm:pb-8 [@media(max-height:700px)]:pt-3 [@media(max-height:700px)]:pb-4 [@media(max-height:600px)]:pb-2">
         <SectionArrow inline label={arrowLabel} targetSection={arrowTarget} />
       </div>
     </section>
