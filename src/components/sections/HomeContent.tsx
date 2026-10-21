@@ -201,7 +201,7 @@ export default function HomeContent() {
               })}
             </div>
 
-            <div className="mt-50">
+            <div className="mt-12 pb-10">
               <SectionArrow
                 label="ROZWIĄZANIA DLA KLIENTA"
                 targetSection="rozwiazania"
