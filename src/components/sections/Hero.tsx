@@ -7,8 +7,8 @@ import RandomNumberAnimation from "@/components/ui/RandomNumberAnimation";
 import useIsDesktop from "@/hooks/useIsDesktop";
 
 export default function Hero({
-  arrowLabel = "O MNIE",
-  arrowTarget = "o mnie",
+  arrowLabel = "O NAS",
+  arrowTarget = "o-nas",
 }: {
   arrowLabel?: string;
   arrowTarget?: string;

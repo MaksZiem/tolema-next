@@ -2,22 +2,22 @@ export const faqs = [
   {
     question: "Ile trwa sporządzenie wyceny nieruchomości?",
     answer:
-      "W zależności od rodzaju nieruchomości i celu wyceny operat szacunkowy przygotowuję zwykle w ciągu 5–10 dni roboczych od oględzin i skompletowania dokumentacji. Terminy pilne ustalam indywidualnie.",
+      "W zależności od rodzaju nieruchomości i celu wyceny operat szacunkowy przygotowujemy zwykle w ciągu 5–10 dni roboczych od oględzin i skompletowania dokumentacji. Terminy pilne ustalamy indywidualnie.",
   },
   {
     question: "Jakie dokumenty są potrzebne do wyceny?",
     answer:
-      "Najczęściej potrzebna jest księga wieczysta, wypis i wyrys z ewidencji gruntów i budynków, dokumentacja techniczna oraz - jeśli istnieje - miejscowy plan zagospodarowania przestrzennego. Pełną listę ustalam po kontakcie, zależnie od celu wyceny.",
+      "Najczęściej potrzebna jest księga wieczysta, wypis i wyrys z ewidencji gruntów i budynków, dokumentacja techniczna oraz - jeśli istnieje - miejscowy plan zagospodarowania przestrzennego. Pełną listę ustalamy po kontakcie, zależnie od celu wyceny.",
   },
   {
     question: "Ile kosztuje wycena nieruchomości lub maszyn?",
     answer:
-      "Cena zależy od rodzaju przedmiotu wyceny, jej celu oraz zakresu prac. Po opisaniu sprawy w formularzu lub telefonicznie przedstawiam indywidualną, przejrzystą wycenę kosztów jeszcze przed rozpoczęciem współpracy.",
+      "Cena zależy od rodzaju przedmiotu wyceny, jej celu oraz zakresu prac. Po opisaniu sprawy w formularzu lub telefonicznie przedstawiamy indywidualną, przejrzystą wycenę kosztów jeszcze przed rozpoczęciem współpracy.",
   },
   {
     question: "Czy realizujecie wyceny poza Grójcem?",
     answer:
-      "Tak. Choć siedziba znajduje się w Grójcu, wyceny realizuję na terenie całego województwa mazowieckiego, a w uzasadnionych przypadkach - również poza nim.",
+      "Tak. Choć siedziba znajduje się w Grójcu, wyceny realizujemy na terenie całego województwa mazowieckiego, a w uzasadnionych przypadkach - również poza nim.",
   },
   {
     question: "Jak długo ważny jest operat szacunkowy?",
@@ -27,12 +27,12 @@ export const faqs = [
   {
     question: "Czy wyceniacie tylko nieruchomości?",
     answer:
-      "Nie - poza nieruchomościami posiadam uprawnienia do wyceny maszyn, urządzeń i środków technicznych, a także przygotowuję wyceny przedsiębiorstw, kosztorysy oraz szacunki szkód.",
+      "Nie - poza nieruchomościami posiadamy uprawnienia do wyceny maszyn, urządzeń i środków technicznych, a także przygotowujemy wyceny przedsiębiorstw, kosztorysy oraz szacunki szkód.",
   },
   {
     question: "Zajmujecie się wycenami do spraw spadkowych i podziału majątku?",
     answer:
-      "Tak, przygotowuję operaty szacunkowe na potrzeby postępowań spadkowych, działu spadku oraz podziału majątku wspólnego. Wycena może zostać zlecona przez jedną ze stron, wszystkich spadkobierców wspólnie lub na wniosek sądu bądź notariusza - zakres i formę dokumentu ustalam indywidualnie do celu postępowania.",
+      "Tak, przygotowujemy operaty szacunkowe na potrzeby postępowań spadkowych, działu spadku oraz podziału majątku wspólnego. Wycena może zostać zlecona przez jedną ze stron, wszystkich spadkobierców wspólnie lub na wniosek sądu bądź notariusza - zakres i formę dokumentu ustalamy indywidualnie do celu postępowania.",
   },
   {
     question: "Jak wygląda wycena szkody dla ubezpieczyciela?",
@@ -42,6 +42,6 @@ export const faqs = [
   {
     question: "Jakie są warunki płatności - czy wystawiacie fakturę?",
     answer:
-      "Tak, do każdej usługi wystawiam fakturę. Warunki płatności - w tym ewentualną zaliczkę oraz termin rozliczenia - ustalam indywidualnie przy potwierdzaniu zlecenia, jeszcze przed rozpoczęciem prac.",
+      "Tak, do każdej usługi wystawiamy fakturę. Warunki płatności - w tym ewentualną zaliczkę oraz termin rozliczenia - ustalamy indywidualnie przy potwierdzaniu zlecenia, jeszcze przed rozpoczęciem prac.",
   },
 ];

@@ -65,7 +65,7 @@ export default function HomeContent() {
     <div className="font-sans relative z-0">
       <Hero />
 
-      <section className="bg-white min-h-screen w-screen flex flex-col min-[1600px]:flex-row" id="o mnie" data-navbar="dark">
+      <section className="bg-white min-h-screen w-screen flex flex-col min-[1600px]:flex-row" id="o-nas" data-navbar="dark">
         <div className="flex flex-col w-full min-[1600px]:w-1/2 bg-white px-6 pt-12 min-[1600px]:px-16 min-[1600px]:pt-18">
           {/* <motion.span
             className="text-m font-medium uppercase tracking-[0.32em] text-[#D4B876]"
@@ -84,7 +84,7 @@ export default function HomeContent() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
             viewport={{ once: true }}
           >
-            O mnie
+            O nas
           </motion.h2>
 
           <motion.div
@@ -95,20 +95,13 @@ export default function HomeContent() {
             viewport={{ once: true }}
           >
             <p className="text-base font-light  text-lg leading-relaxed text-black/70">
-              Należę do Warszawskiego Stowarzyszenia Rzeczoznawców Majątkowych
-              zrzeszonego w Polskiej Federacji Stowarzyszeń Rzeczoznawców
-              Majątkowych. Jestem absolwentem Wydziału Wiertnictwa Nafty i Gazu
-              (specjalność gazownictwo ziemne) oraz Wydziału Górnictwa i
-              Geoinżynierii (specjalność zarządzanie i marketing) Akademii
-              Górniczo-Hutniczej w Krakowie. Ukończyłem studia MBA na Akademii
-              Leona Koźmińskiego w Warszawie. Posiadam certyfikaty{" "}
-              &#8222;Wycena dla potrzeb zabezpieczenia wierzytelności bankowych&#8221;
-              (Związek Banków Polskich) oraz
-              &#8222;Wycena dla potrzeb zabezpieczenia wierzytelności&#8221;
-              (Polska Federacja Stowarzyszeń Rzeczoznawców Majątkowych). Jestem
-              wpisany na listę rzeczoznawców majątkowych rekomendowanych do
-              wycen nieruchomości dla sektora bankowego, publikowaną m.in. przez
-              Związek Banków Polskich.
+              TOLEMA NIERUCHOMOŚCI sp. z o.o. to firma rzeczoznawcza z Grójca.
+              Sporządzamy operaty szacunkowe nieruchomości, wyceny maszyn,
+              urządzeń i przedsiębiorstw oraz kosztorysy i szacunki szkód - dla
+              klientów indywidualnych, firm, banków i sądów. Należymy do
+              Warszawskiego Stowarzyszenia Rzeczoznawców Majątkowych i
+              znajdujemy się na liście rzeczoznawców rekomendowanych do wycen
+              dla sektora bankowego przez Związek Banków Polskich.
             </p>
           </motion.div>
 

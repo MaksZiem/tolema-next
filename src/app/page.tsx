@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "TOLEMA wyceny | Rzeczoznawca majątkowy Grójec",
   description:
-    "Rzeczoznawca majątkowy z Grójca. Profesjonalne wyceny nieruchomości, maszyn, środków technicznych i przedsiębiorstw - wiedza, praktyka i najwyższe standardy.",
+    "TOLEMA NIERUCHOMOŚCI sp. z o.o. - rzeczoznawca majątkowy z Grójca. Profesjonalne wyceny nieruchomości, maszyn, środków technicznych i przedsiębiorstw - wiedza, praktyka i najwyższe standardy.",
   keywords:
     "rzeczoznawca majątkowy Grójec, wycena nieruchomości, operat szacunkowy, wycena maszyn, wycena przedsiębiorstwa, rzeczoznawca majątkowy mazowieckie",
   alternates: {

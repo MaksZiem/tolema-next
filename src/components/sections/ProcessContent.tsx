@@ -167,7 +167,7 @@ export default function ProcessContent() {
             viewport={{ once: true }}
           >
             Skontaktuj się, aby ustalić cel wyceny i zakres dokumentacji -
-            resztą procesu zajmę się kompleksowo.
+            resztą procesu zajmiemy się kompleksowo.
           </motion.p>
 
           <motion.div

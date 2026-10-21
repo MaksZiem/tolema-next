@@ -23,7 +23,7 @@ const contactSteps = [
     text: "Opisujesz krótko przedmiot i cel wyceny.",
   },
   {
-    title: "Odpowiadam",
+    title: "Odpowiadamy",
     text: "Otrzymujesz zakres prac i wycenę kosztu, zwykle w ciągu 24 godzin.",
   },
   {
@@ -223,7 +223,7 @@ export default function ContactContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            Zadaj mi <span className="font-semibold">pytanie dotyczące wyceny</span>
+            Zadaj nam <span className="font-semibold">pytanie dotyczące wyceny</span>
           </motion.h1>
 
           <motion.p
@@ -232,7 +232,7 @@ export default function ContactContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            Opisz w kilku zdaniach swoją sprawę - odpowiem z propozycją
+            Opisz w kilku zdaniach swoją sprawę - odpowiemy z propozycją
             zakresu prac i kosztu wyceny. Można też zadzwonić lub napisać
             bezpośrednio na e-mail.
           </motion.p>
