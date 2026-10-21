@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Footer from "@/components/layout/Footer";
 import ActionButton from "@/components/ui/ActionButton";
+import { noOrphans } from "@/lib/typography";
 import SectionArrow from "@/components/navigation/SectionArrow";
 
 // ── Data ──────────────────────────────────────────────────────────────
@@ -281,8 +282,8 @@ function ServiceSection({
             transition={{ duration: 0.7, delay: 0.07 }}
             viewport={{ once: true }}
           >
-            {title}{" "}
-            <span className="font-semibold">{titleStrong}</span>
+            {noOrphans(title)}{" "}
+            <span className="font-semibold">{noOrphans(titleStrong)}</span>
           </motion.h2>
 
           <motion.div
@@ -297,7 +298,7 @@ function ServiceSection({
                 dark ? "text-white/65" : "text-black/65"
               }`}
             >
-              {description}
+              {noOrphans(description)}
             </p>
           </motion.div>
 
@@ -321,7 +322,7 @@ function ServiceSection({
                 viewport={{ once: true }}
               >
                 <span aria-hidden className="mt-2.5 h-px w-4 shrink-0 bg-[#D4B876]" />
-                <span>{uc}</span>
+                <span>{noOrphans(uc)}</span>
               </motion.li>
             ))}
           </motion.ul>
@@ -344,7 +345,7 @@ function ServiceSection({
             <ul className="md:grid md:grid-cols-2 md:gap-x-10">
               {tags.slice(0, TAGS_MOBILE_LIMIT).map((tag) => (
                 <li key={tag} className={`border-t py-2.5 text-sm font-light ${tagClass}`}>
-                  {tag}
+                  {noOrphans(tag)}
                 </li>
               ))}
             </ul>
@@ -362,7 +363,7 @@ function ServiceSection({
                 <ul className="md:grid md:grid-cols-2 md:gap-x-10">
                   {tags.slice(TAGS_MOBILE_LIMIT).map((tag) => (
                     <li key={tag} className={`border-t py-2.5 text-sm font-light ${tagClass}`}>
-                      {tag}
+                      {noOrphans(tag)}
                     </li>
                   ))}
                 </ul>
