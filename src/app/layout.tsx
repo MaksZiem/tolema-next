@@ -34,6 +34,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+    date: false,
+  },
 };
 
 export const viewport: Viewport = {
