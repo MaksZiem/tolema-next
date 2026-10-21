@@ -23,7 +23,7 @@ const CustomArrowDown = ({
     <path
       d="M7 10L12 15L17 10"
       stroke="currentColor"
-      strokeWidth="1.25"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -69,13 +69,13 @@ const SectionArrow = ({
       onClick={scrollToSection}
     >
       <span
-        className="block text-sm font-light text-center opacity-70 tracking-[0.2em] transition-opacity duration-300 group-hover:opacity-100"
+        className="block text-base md:text-lg font-medium text-center opacity-90 tracking-[0.2em] transition-opacity duration-300 group-hover:opacity-100"
         style={{ color }}
       >
         {label}
       </span>
       <CustomArrowDown
-        size={28}
+        size={32}
         style={{ color }}
         className="mt-1 transition-transform duration-300 ease-out group-hover:translate-y-1"
       />
