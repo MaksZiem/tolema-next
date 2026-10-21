@@ -112,10 +112,10 @@ export default function Navbar() {
           return (
             <li
               key={href}
-              className="group relative cursor-pointer px-4 py-2"
+              className="group relative"
               style={{ color, transition: "color 0.35s ease" }}
             >
-              <Link href={href} className="block">
+              <Link href={href} className="block px-4 py-2">
                 {label}
                 <div
                   className={`absolute bottom-0 left-4 right-4 h-0.5 origin-left ${
