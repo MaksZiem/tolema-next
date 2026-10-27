@@ -1,16 +1,20 @@
 "use server";
 
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
   message: string;
 };
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "operat24@gmail.com";
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = Number(process.env.SMTP_PORT ?? 465);
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "info@tolema.pl";
 const FROM_EMAIL =
   process.env.CONTACT_FROM_EMAIL ??
-  "Formularz kontaktowy TOLEMA <onboarding@resend.dev>";
+  `Formularz kontaktowy TOLEMA <${SMTP_USER ?? "info@tolema.pl"}>`;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -47,10 +51,9 @@ export async function sendContactMessage(
     return { status: "error", message: "Podaj poprawny adres e-mail." };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
     console.warn(
-      "RESEND_API_KEY nie jest ustawiony - formularz kontaktowy nie może wysłać wiadomości."
+      "SMTP_HOST / SMTP_USER / SMTP_PASSWORD nie są ustawione - formularz kontaktowy nie może wysłać wiadomości."
     );
     return {
       status: "error",
@@ -60,8 +63,14 @@ export async function sendContactMessage(
   }
 
   try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASSWORD },
+    });
+
+    await transporter.sendMail({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
@@ -88,14 +97,6 @@ export async function sendContactMessage(
         </div>
       `,
     });
-
-    if (error) {
-      console.error("Resend error:", error);
-      return {
-        status: "error",
-        message: "Nie udało się wysłać wiadomości. Spróbuj ponownie później.",
-      };
-    }
 
     return {
       status: "success",

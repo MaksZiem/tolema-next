@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { COMPANY } from "@/lib/site";
 
 const navLinks = [
   { href: "/", label: "Strona główna" },
@@ -207,10 +208,10 @@ export default function Navbar() {
           >
             <span>TOLEMA nieruchomości</span>
             <a
-              href="mailto:operat24@gmail.com"
+              href={`mailto:${COMPANY.email}`}
               className="transition-colors duration-300 hover:text-[#D4B876]"
             >
-              operat24@gmail.com
+              {COMPANY.email}
             </a>
           </motion.div>
         </motion.div>

@@ -112,12 +112,8 @@ export default function PrivacyPolicyPage() {
           <h2 className={h2}>3. Odbiorcy danych</h2>
           <p className={p}>Twoje dane mogą być przekazywane podmiotom, które świadczą dla nas usługi:</p>
           <ul className="mb-4 list-disc space-y-2 pl-6 text-base font-light leading-relaxed text-black/75">
-            <li>home.pl S.A. (Polska) - hosting strony,</li>
-            <li>Resend (USA) - wysyłka wiadomości z formularza kontaktowego,</li>
-            <li>
-              Google (Google Ireland Ltd. / Google LLC) - poczta e-mail oraz, po wyrażeniu zgody, Google
-              Analytics,
-            </li>
+            <li>home.pl S.A. (Polska) - hosting strony oraz poczta e-mail, w tym wiadomości z formularza kontaktowego,</li>
+            <li>Google (Google Ireland Ltd. / Google LLC) - po wyrażeniu zgody, Google Analytics,</li>
             <li>biuro rachunkowe i podmioty świadczące obsługę prawną - w zakresie niezbędnym przy zleceniach.</li>
           </ul>
 

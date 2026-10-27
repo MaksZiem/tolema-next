@@ -12,7 +12,7 @@ export const COMPANY = {
   nip: "7972088888",
   regon: "529755370",
   shareCapital: "5 000,00 zł",
-  email: "operat24@gmail.com",
+  email: "info@tolema.pl",
   phone: "+48 737 535 554",
   phoneHref: "tel:+48737535554",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zdrojowa+13%2C+05-600+Gr%C3%B3jec",
