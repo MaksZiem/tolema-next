@@ -6,7 +6,7 @@ import { COMPANY, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Polityka prywatności | TOLEMA – Rzeczoznawca majątkowy",
   description:
-    "Informacje o przetwarzaniu danych osobowych i plikach cookies na stronie TOLEMA wyceny.",
+    "Informacje o przetwarzaniu danych osobowych i plikach cookies na stronie TOLEMA nieruchomości.",
   alternates: {
     canonical: `${SITE_URL}/polityka-prywatnosci`,
   },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LAST_UPDATED = "21 października 2026 r.";
+const LAST_UPDATED = "27 października 2026 r.";
 
 const h2 = "mt-14 mb-4 text-2xl font-thin tracking-tight md:text-3xl";
 const p = "mb-4 text-base font-light leading-relaxed text-black/75";
@@ -112,7 +112,7 @@ export default function PrivacyPolicyPage() {
           <h2 className={h2}>3. Odbiorcy danych</h2>
           <p className={p}>Twoje dane mogą być przekazywane podmiotom, które świadczą dla nas usługi:</p>
           <ul className="mb-4 list-disc space-y-2 pl-6 text-base font-light leading-relaxed text-black/75">
-            <li>Vercel Inc. (USA) - hosting strony,</li>
+            <li>home.pl S.A. (Polska) - hosting strony,</li>
             <li>Resend (USA) - wysyłka wiadomości z formularza kontaktowego,</li>
             <li>
               Google (Google Ireland Ltd. / Google LLC) - poczta e-mail oraz, po wyrażeniu zgody, Google

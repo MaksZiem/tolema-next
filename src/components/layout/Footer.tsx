@@ -75,13 +75,21 @@ const Footer = () => {
 
       <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 bg-black px-8 py-5 text-white md:flex-row md:px-16 lg:px-24">
         <span className="text-xs font-light uppercase tracking-[0.3em] text-white/70">
-          &copy; {year} TOLEMA wyceny · Wszelkie prawa zastrzeżone
+          &copy; {year} TOLEMA nieruchomości · Wszelkie prawa zastrzeżone
         </span>
         <span className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-light uppercase tracking-[0.2em] text-white/70">
           <Link href="/polityka-prywatnosci" className="hover:text-white">
             Polityka prywatności
           </Link>
           <CookieSettingsButton className="uppercase tracking-[0.2em] hover:text-white" />
+          <a
+            href="https://zmax-dev.pl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white"
+          >
+            Realizacja: zmax-dev
+          </a>
         </span>
       </div>
     </footer>

@@ -97,14 +97,14 @@ export default function Navbar() {
     >
       <Link href="/">
         <div
-          className="text-2xl font-bold min-[900px]:text-3xl"
+          className="whitespace-nowrap text-[clamp(1rem,4.6vw,1.5rem)] font-bold min-[900px]:text-xl xl:text-3xl"
           style={{ color, transition: isOpen ? "color 0.25s ease" : "color 0ms" }}
         >
-          TOLEMA wyceny <span className="font-thin">sp. z o.o.</span>
+          TOLEMA nieruchomości <span className="font-thin">sp. z o.o.</span>
         </div>
       </Link>
 
-      <ul className="hidden items-center text-xl min-[900px]:flex">
+      <ul className="hidden items-center text-lg xl:text-xl min-[900px]:flex">
         {navLinks.map(({ href, label }) => {
           const isActive =
             href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -203,14 +203,14 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.35 }}
-            className="flex items-center justify-between px-8 py-8 text-base font-normal text-white/80"
+            className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-8 py-8 text-base font-normal text-white/80"
           >
-            <span>TOLEMA wyceny</span>
+            <span>TOLEMA nieruchomości</span>
             <a
-              href="mailto:operat23@gmail.com"
+              href="mailto:operat24@gmail.com"
               className="transition-colors duration-300 hover:text-[#D4B876]"
             >
-              operat23@gmail.com
+              operat24@gmail.com
             </a>
           </motion.div>
         </motion.div>

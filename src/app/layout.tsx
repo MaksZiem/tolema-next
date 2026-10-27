@@ -13,7 +13,7 @@ const hanken = Hanken_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "TOLEMA wyceny | Rzeczoznawca majątkowy Grójec",
+    default: "TOLEMA nieruchomości | Rzeczoznawca majątkowy Grójec",
     template: "%s",
   },
   description:

@@ -1,5 +1,5 @@
 export const SITE_URL = "https://zmax-dev.pl";
-export const SITE_NAME = "TOLEMA wyceny";
+export const SITE_NAME = "TOLEMA nieruchomości";
 
 // Dane spółki - wymagane na stronie (art. 206 KSH, art. 5 UŚUDE) i w polityce prywatności.
 export const COMPANY = {
@@ -12,7 +12,7 @@ export const COMPANY = {
   nip: "7972088888",
   regon: "529755370",
   shareCapital: "5 000,00 zł",
-  email: "operat23@gmail.com",
+  email: "operat24@gmail.com",
   phone: "+48 737 535 554",
   phoneHref: "tel:+48737535554",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zdrojowa+13%2C+05-600+Gr%C3%B3jec",

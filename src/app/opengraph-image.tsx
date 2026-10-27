@@ -29,7 +29,7 @@ export default function Image() {
             marginBottom: 24,
           }}
         >
-          TOLEMA wyceny
+          TOLEMA nieruchomości
         </div>
         <div style={{ display: "flex", fontSize: 68, fontWeight: 300, lineHeight: 1.15 }}>
           Rzeczoznawca majątkowy

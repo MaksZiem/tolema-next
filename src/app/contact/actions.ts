@@ -7,7 +7,7 @@ export type ContactFormState = {
   message: string;
 };
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "operat23@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "operat24@gmail.com";
 const FROM_EMAIL =
   process.env.CONTACT_FROM_EMAIL ??
   "Formularz kontaktowy TOLEMA <onboarding@resend.dev>";
