@@ -92,7 +92,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 z-50 flex w-full items-center justify-between px-6 py-3 transition-colors ${
-        isOpen ? "bg-[#0d0d0d]" : "backdrop-blur-sm bg-white/10"
+        isOpen ? "bg-[#0d0d0d]" : theme === "light" ? "bg-white/10" : "backdrop-blur-sm bg-white/10"
       }`}
       style={{ transitionDuration: isOpen ? "250ms" : "0ms" }}
     >

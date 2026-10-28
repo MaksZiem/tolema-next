@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import PricingButton from "@/components/ui/PricingButton";
 import useIsDesktop from "@/hooks/useIsDesktop";
+import usePauseOffscreenVideos from "@/hooks/usePauseOffscreenVideos";
 
 type Theme = "dark" | "gold" | "light";
 
@@ -93,6 +94,7 @@ export default function OfferSection({
     once: true,
     margin: "800px 0px 800px 0px",
   });
+  usePauseOffscreenVideos(rootRef);
 
   return (
     <motion.div

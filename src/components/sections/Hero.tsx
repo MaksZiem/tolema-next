@@ -6,6 +6,8 @@ import SectionArrow from "@/components/navigation/SectionArrow";
 import RandomNumberAnimation from "@/components/ui/RandomNumberAnimation";
 import { COMPANY } from "@/lib/site";
 import useIsDesktop from "@/hooks/useIsDesktop";
+import usePauseOffscreenVideos from "@/hooks/usePauseOffscreenVideos";
+import { useRef } from "react";
 
 export default function Hero({
   arrowLabel = "O NAS",
@@ -15,30 +17,36 @@ export default function Hero({
   arrowTarget?: string;
 }) {
   const isDesktop = useIsDesktop();
+  const sectionRef = useRef<HTMLElement>(null);
+  usePauseOffscreenVideos(sectionRef);
 
   return (
     <section
-      className="relative flex min-h-[100svh] w-full flex-col text-white"
+      ref={sectionRef}
+      className={`relative flex min-h-[100svh] w-full flex-col text-white ${isDesktop ? "isolate" : ""}`}
       data-navbar="light"
     >
       {isDesktop ? (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          controls={false}
-          disablePictureInPicture
-          disableRemotePlayback
-          tabIndex={-1}
-          draggable={false}
-          onContextMenu={(e) => e.preventDefault()}
-          poster="/temida-poster.webp"
-          preload="auto"
-          className="fixed top-0 left-0 w-full h-full object-cover -z-10 brightness-50 pointer-events-none select-none"
-        >
-          <source src="/temida.mp4" type="video/mp4" />
-        </video>
+        <>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls={false}
+            disablePictureInPicture
+            disableRemotePlayback
+            tabIndex={-1}
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            poster="/temida-poster.webp"
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover -z-10 pointer-events-none select-none"
+          >
+            <source src="/temida.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 -z-10 bg-black/50 pointer-events-none" aria-hidden="true" />
+        </>
       ) : (
         <HeroMobileSlider />
       )}
