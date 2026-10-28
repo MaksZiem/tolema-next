@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import ActionButton from "@/components/ui/ActionButton";
-import { sendContactMessage, type ContactFormState } from "@/app/contact/actions";
+import { sendContactMessage, type ContactFormState } from "@/lib/contact";
 import { faqs } from "@/data/faq";
 
 const topics = [

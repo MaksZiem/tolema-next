@@ -1,4 +1,4 @@
-export const SITE_URL = "https://zmax-dev.pl";
+export const SITE_URL = "https://tolema.pl";
 export const SITE_NAME = "TOLEMA nieruchomości";
 
 // Dane spółki - wymagane na stronie (art. 206 KSH, art. 5 UŚUDE) i w polityce prywatności.

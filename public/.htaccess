@@ -1,0 +1,39 @@
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.tolema\.pl$ [NC]
+  RewriteRule ^ https://tolema.pl%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+<Files "opengraph-image">
+  ForceType image/png
+</Files>
+
+<IfModule mod_alias.c>
+  RedirectMatch 301 ^/kontakt/?$ https://tolema.pl/contact/
+  RedirectMatch 301 ^/(oferta|cennik|biegli-sadowi)/?$ https://tolema.pl/offer/
+  RedirectMatch 301 ^/polityka-cookies/?$ https://tolema.pl/polityka-prywatnosci/
+  RedirectMatch 301 ^/(o-nas|wykonane-wyceny|aktualnosci|nowa-strona-www|zmiany-w-uzytkowaniu-wieczystym-uchwalone|piekarnia-z-czescia-handlowa|sortownia-owocow|koparko-ladowarka-jcb-4cx-z-osprzetem)/?$ https://tolema.pl/
+  RedirectMatch 301 ^/(category|author|project|projects|tag)/.*$ https://tolema.pl/
+  RedirectMatch 301 ^/(post|page|project|category|author)-sitemap\.xml$ https://tolema.pl/sitemap.xml
+  RedirectMatch 301 ^/sitemap_index\.xml$ https://tolema.pl/sitemap.xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(mp4|webp|png|jpg|jpeg|svg|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <If "%{REQUEST_URI} =~ m#^/_next/static/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain application/json image/svg+xml text/xml application/xml
+</IfModule>
