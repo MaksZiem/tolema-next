@@ -50,7 +50,6 @@ function saveDecision(value: Decision) {
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
-// Usuwa cookies Google Analytics po wycofaniu zgody.
 function clearGaCookies() {
   const host = location.hostname;
   const domains = ["", host, `.${host}`, `.${host.split(".").slice(-2).join(".")}`];
